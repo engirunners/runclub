@@ -1,0 +1,11 @@
+ru:
+  active_admin:
+    resources:
+      athlete:
+        new_model: 'Добавить одноклубника'
+        edit_model: 'Отредактировать'
+        delete_model: 'Удалить одноклубника'
+      user:
+        new_model: 'Добавить админа'
+        edit_model: 'Изменить админа'
+        delete_model: 'Удалить админа'

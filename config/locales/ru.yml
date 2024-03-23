@@ -1,0 +1,73 @@
+ru:
+  activerecord:
+    models:
+      achievement:
+        one: достижение
+        few: достижения
+        many: достижений
+        other: Достижения
+      athlete:
+        one: спортсмен
+        few: спортсмена
+        many: спортсменов
+        other: Спортсмены
+      event:
+        one: мероприятие
+        few: мероприятия
+        many: мероприятий
+        other: Мероприятия
+      partner:
+        one: партнёр
+        few: партнёра
+        many: партнёров
+        other: Партнёры
+      photo:
+        one: фото
+        other: Фото
+      result:
+        one: результат
+        few: результата
+        many: результатов
+        other: Результаты
+      user:
+        one: админ
+        few: админа
+        many: админов
+        other: Админы
+    attributes:
+      achievement:
+        title: заголовок
+        description: описание
+      athlete:
+        image: фото
+        first_name: имя
+        last_name: фамилия
+        birth_date: дата рождения
+        gender: пол
+        genders:
+          male: мужской
+          female: женский
+        phone: телефон
+        email: e-mail
+        telegram_name: телеграм
+        name: Имя ФАМИЛИЯ
+        description: характеристика
+        location: локация
+        password: пароль
+        password_confirmation: пароль ещё раз
+      event:
+        date: дата
+        name: название
+        description: описание
+      partner:
+        name: название
+        link: ссылка
+        logo: логотип
+      photo:
+        image: изображение
+      result:
+        distance: дистанция (км)
+        position: место
+        total_time: результат
+        personal_best: личник
+        athlete: спортсмен

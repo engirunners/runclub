@@ -1,0 +1,8 @@
+ru:
+  devise:
+    sessions:
+      signed_in: "Привет! Вы успешно вошли."
+      signed_out: "Вы вышли."
+      already_signed_out: "Вы уже вышли."
+    failure:
+      unauthenticated: "Залогиньтесь прежде чем продолжить."

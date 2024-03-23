@@ -1,0 +1,7 @@
+@import "bootstrap";
+
+@mixin media($query) {
+  @if $query == phoneScreen {
+    @media (max-width: 768px) { @content; }
+  }
+}

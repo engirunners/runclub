@@ -1,0 +1,66 @@
+require:
+  - rubocop-factory_bot
+  - rubocop-rails
+  - rubocop-rake
+  - rubocop-performance
+  - rubocop-rspec
+
+# METRICS
+Metrics/AbcSize:
+  Max: 35
+  Exclude:
+   - 'db/**/*'
+Metrics/CyclomaticComplexity:
+  Max: 8
+Metrics/PerceivedComplexity:
+  Max: 8
+Metrics/MethodLength:
+  Max: 16
+  Exclude:
+   - 'db/**/*'
+Metrics/ClassLength:
+  Exclude:
+    - 'app/models/**/*'
+    - 'db/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'app/admin/**/*'
+    - 'app/views/admin/**/*'
+    - 'lib/tasks/**/*'
+    - 'spec/**/*'
+    - 'db/**/*'
+
+# STYLE
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'config.ru'
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+Style/HashSyntax:
+  EnforcedShorthandSyntax: consistent
+Style/NumericLiterals:
+  Enabled: false
+
+Naming/VariableNumber:
+  CheckSymbols: false
+
+# LAYOUT
+Layout/LineLength:
+  Max: 124
+Layout/BeginEndAlignment:
+  EnforcedStyleAlignWith: begin
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+AllCops:
+  TargetRubyVersion: 3.2
+  Exclude:
+    - 'tmp/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/schema.rb'
+  NewCops: enable

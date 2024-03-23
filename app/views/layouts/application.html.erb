@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <head>
-    <title>Engirunners</title>
+    <title><%= yield_head_info(:title, 'Беговой клуб') %> | Engirunners</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= yield_head_info(:description, 'Беговой клуб Engirunners: о клубе, участники, соревнования и результаты') %>">
+    <meta name="keywords" content="<%= yield_head_info(:keywords, 'engirunners,клуб,бег,сообщество,результаты,соревнования,планы') %>">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
 

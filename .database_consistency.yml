@@ -1,0 +1,7 @@
+DatabaseConsistencySettings:
+  color: true
+
+User:
+  index_users_on_reset_password_token:
+    UniqueIndexChecker:
+      enabled: false
