@@ -1,0 +1,87 @@
+<!-- Header -->
+<header class="py-3 bg-image-full" style="background-image: url('<%= asset_path 'plate.png' %>')">
+  <div class="text-center my-5">
+    <%= image_tag 'logo_150.png', class: 'img-fluid rounded-circle mb-4', alt:'Логотип клуба' %>
+    <h1 class="text-dark fs-1 fw-bold">Engirunners</h1>
+    <h6 class="text-white mb-0">Клуб быстрых технарей. Основан в 2015 году</h6>
+  </div>
+</header>
+<!-- Features section -->
+<section class="py-5 border-bottom" id="features">
+  <div class="container px-5 my-5">
+    <div class="row gx-5">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-people-group"></i></div>
+        <h2 class="h4 fw-bolder">Состав клуба</h2>
+        <p>Хорошие быстрые ребята.</p>
+        <a class="text-decoration-none icon-link" href="#!">
+          Смотреть
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-table"></i></div>
+        <h2 class="h4 fw-bolder">Статистика</h2>
+        <p>Эстафеты и показанные результаты.</p>
+        <a class="text-decoration-none icon-link" href="#!">
+          Смотреть
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="col-lg-4">
+        <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-trophy"></i></div>
+        <h2 class="h4 fw-bolder">Достижения</h2>
+        <p>Об успехах нашего клуба.</p>
+        <a class="text-decoration-none icon-link" href="#!">
+          Смотреть
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Partners section -->
+<section class="bg-light py-5 border-bottom">
+  <div class="container px-5 my-5">
+    <div class="text-center mb-5">
+      <h2 class="fw-bolder">Наши партнёры</h2>
+      <p class="lead mb-0">Мы всегда готовы рассмотреть вопросы сотрудничества</p>
+    </div>
+    <div class="row gx-5 justify-content-center">
+      <% Partner.all.find_each do |partner| %>
+        <div class="col-lg-6 col-xl-2">
+          <%= link_to partner.link do %>
+            <div class="card mb-3 mb-xl-0">
+              <%= image_tag partner.logo.variant(:thumb), class: 'card-img', alt: partner.name, title: partner.name %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<!-- Content section-->
+<section class="py-5">
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <h2 id="contacts">Наши контакты</h2>
+        <p class="lead">Пишите нам письма, ищите в соцсетях.</p>
+        <ul class="fa-ul">
+          <li>
+            <span class="fa-li"><i class="fa-regular fa-paper-plane"></i></span>
+            <a href="https://t.me/engirunners" class="text-decoration-none" target="_blank" rel="noopener">@engirunners</a>
+          </li>
+          <li>
+            <span class="fa-li"><i class="fa-regular fa-envelope"></i></span>
+            <a href="mailto:info@engirunners.com" class="text-decoration-none" target="_blank" rel="noopener">info@engirunners.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Header -->
+<div class="py-5 bg-image-full" style="background-image: url('<%= asset_path 'plate.png' %>')">
+  <div style="height: 5rem"></div>
+</div>

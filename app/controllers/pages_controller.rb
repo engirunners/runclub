@@ -1,21 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-  ALLOWED_PAGES = %w[index about robots].freeze
+  def index; end
 
-  before_action :validate_page
-
-  def show
-    render template: "pages/#{page_name}"
-  end
-
-  private
-
-  def page_name
-    @page_name ||= params[:page]&.to_s || 'index'
-  end
-
-  def validate_page
-    render file: 'public/404.html', status: :not_found if ALLOWED_PAGES.exclude?(page_name)
-  end
+  def about; end
 end

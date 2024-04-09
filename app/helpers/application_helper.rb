@@ -9,6 +9,17 @@ module ApplicationHelper
     content_for?(:"meta_#{tag}") ? content_for(:"meta_#{tag}") : default_text
   end
 
+  def current_page?(page)
+    case page
+    when 'index'
+      params[:controller] == 'pages' && params[:action] == 'index'
+    when 'about'
+      params[:controller] == 'pages' && params[:action] == 'about'
+    else
+      params[:controller] == page
+    end
+  end
+
   def human_result_time(time)
     return 'xx:xx' unless time
 
