@@ -8,6 +8,8 @@
 
 ## Deployment instructions
 
+See https://gorails.com/deploy/ubuntu/22.04
+
 ### Server configuration
 
 ```
