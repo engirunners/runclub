@@ -17,12 +17,14 @@ sudo apt-get update
 sudo apt-get -y install postgresql postgresql-contrib libpq-dev libffi-dev libyaml-dev libvips-dev nodejs yarn rbenv gnupg nginx
 adduser deploy
 adduser deploy sudo
+sudo timedatectl set-timezone Europe/Moscow
 # Install rbenv
 rbenv init
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 rbenv install 3.2.2
 rbenv global 3.2.2
+git clone https://github.com/rbenv/rbenv-vars.git "$(rbenv root)"/plugins/rbenv-vars
 gem install bundler
 sudo mkdir -p /var/www
 sudo chown deploy /var/www
