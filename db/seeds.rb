@@ -10,21 +10,19 @@ if Rails.env.development?
     first_name: 'Ura',
     last_name: 'Volodin',
     gender: :male,
-    phone: '+79991234567',
-    telegram_name: 'test_test',
-    location: 'Kuzminki, Moscow',
-    description: 'Test test test',
   )
   event = Event.create!(
     date: Date.yesterday,
     name: 'Relay on track',
-    description: 'Test description',
+    total_time: '01:20:33',
+    location: 'Kuzminki, Moscow',
+    position: 2,
   )
   Result.create!(
     event: event,
     athlete: athlete,
+    stage: 1,
     distance: 3.2,
-    position: 11,
     total_time: '00:10:33',
   )
 end

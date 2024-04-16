@@ -3,7 +3,6 @@
 Rails.application.routes.draw do
   root 'pages#index'
   get '/about', to: 'pages#about', as: :about
-  resources :photos, only: :index
   resources :athletes, only: :index
   resources :achievements, only: :index
   resources :events, only: :index

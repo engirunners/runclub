@@ -2,14 +2,14 @@
 
 ActiveAdmin.register User do
   actions :all, except: [:show]
-  permit_params :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation
 
   config.filters = false
 
   index download_links: false do
-    selectable_column
     column :email
-    actions
+    column :created_at
+    actions dropdown: true
   end
 
   form do |f|

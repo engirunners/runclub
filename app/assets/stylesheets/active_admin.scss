@@ -4,8 +4,14 @@
 // `app/assets/stylesheets/active_admin/mixins/_variables.scss` in the
 // Active Admin source.
 //
-// For example, to change the sidebar width:
-// $sidebar-width: 242px;
+$primary-color: #c91417 !default;
+$secondary-color: #FCEA10 !default;
+$table-stripe-color: lighten($primary-color, 70%) !default;
+$link-color: #25283D !default;
+$text-color: #0f0f0f !default;
+$error-color: #8F3985 !default;
+$breadcrumbs-color: $link-color !default;
+$table-error-color: lighten($error-color, 25%);
 
 // Active Admin's got SASS!
 @import "active_admin/mixins";
@@ -21,4 +27,9 @@
 body {
     font-size: 82%;
 }
-  
+
+tr.odd, tr.even {
+  &.inactive {
+    background-color: $table-error-color;
+  }
+}

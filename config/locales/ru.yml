@@ -21,9 +21,6 @@ ru:
         few: партнёра
         many: партнёров
         other: Партнёры
-      photo:
-        one: фото
-        other: Фото
       result:
         one: результат
         few: результата
@@ -43,31 +40,41 @@ ru:
         first_name: имя
         last_name: фамилия
         birth_date: дата рождения
+        debut_date: дата дебюта
+        exit_date: дата ухода
         gender: пол
         genders:
           male: мужской
           female: женский
-        phone: телефон
-        email: e-mail
-        telegram_name: телеграм
+        parkrun_link: паркран
+        fiveverst_link: 5 вёрст
+        s95_link: S95
+        probeg_link: probeg
         name: Имя ФАМИЛИЯ
-        description: характеристика
-        location: локация
-        password: пароль
-        password_confirmation: пароль ещё раз
       event:
         date: дата
         name: название
-        description: описание
+        location: локация
+        total_time: время
+        category: категория
+        categories:
+          mf: МЖ
+          mm: ММ
+          ff: ЖЖ
+        stages: этапов
+        form: формат
+        position: место
+        places_overall: всего команд
       partner:
         name: название
         link: ссылка
         logo: логотип
-      photo:
-        image: изображение
       result:
         distance: дистанция (км)
-        position: место
-        total_time: результат
-        personal_best: личник
+        stage: этап
+        total_time: время
         athlete: спортсмен
+      user:
+        created_at: создан
+        password: пароль
+        password_confirmation: пароль ещё раз

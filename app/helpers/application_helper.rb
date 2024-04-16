@@ -37,14 +37,12 @@ module ApplicationHelper
     (((time.hour * 60) + time.min) * 60) + time.sec
   end
 
-  def sanitized_text(text)
-    sanitize text, tags: %w[strong em s blockquote pre ol ul li a p], attributes: %w[href rel target]
+  def human_event_category(event)
+    t "activerecord.attributes.event.categories.#{event.category}"
   end
 
-  def telegram_link(athlete)
-    return unless athlete&.telegram_name
-
-    external_link_to "@#{athlete.telegram_name}", "https://t.me/#{athlete.telegram_name}"
+  def sanitized_text(text)
+    sanitize text, tags: %w[strong em s blockquote pre ol ul li a p], attributes: %w[href rel target]
   end
 
   def external_link_to(title = nil, options = nil, html_options = {}, &)

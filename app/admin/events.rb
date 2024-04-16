@@ -1,30 +1,28 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Event do
-  permit_params :date, :name, :description
+  actions :all, except: [:show]
+
+  permit_params :date, :name, :location, :total_time, :category, :form, :position, :places_overall
 
   config.sort_order = 'date_desc'
 
-  filter :athlete
   filter :date
   filter :name
-  filter :description
+  filter :category, as: :select
 
   index download_links: [:scv] do
-    selectable_column
     column :date
     column :name
-    column(:description) { |e| sanitized_text e.description&.truncate(200) }
-    actions
-  end
-
-  show do
-    attributes_table do
-      row :date
-      row :name
-      row(:description) { |e| sanitized_text e.description }
-      row :updated_at
-      row :created_at
+    column :location, sortable: false
+    column(:total_time) { |e| human_result_time e.total_time }
+    column(:category) { |e| human_event_category(e) }
+    column(:stages) { |e| e.results.count }
+    column :form, sortable: false
+    column :position
+    column :places_overall
+    actions dropdown: true do |event|
+      item 'Результаты', admin_event_results_path(event)
     end
   end
 
@@ -32,26 +30,12 @@ ActiveAdmin.register Event do
     f.inputs do
       f.input :date, start_year: 2015, end_year: Date.current.year
       f.input :name
-      f.input :description, as: :quill_editor,
-                            input_html: {
-                              data: {
-                                options: {
-                                  modules: {
-                                    toolbar: [
-                                      %w[bold italic strike],
-                                      %w[blockquote code-block],
-                                      [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-                                      [{ indent: '-1' }, { indent: '+1' }],
-                                      [{ direction: 'rtl' }],
-                                      ['link'],
-                                      ['clean']
-                                    ],
-                                  },
-                                  placeholder: 'Какое же ...',
-                                  theme: 'snow',
-                                },
-                              },
-                            }
+      f.input :location
+      f.input :total_time, as: :time_select, include_seconds: true, ignore_date: true, include_blank: false
+      f.input :category, include_blank: false
+      f.input :form
+      f.input :position
+      f.input :places_overall
     end
     f.actions
   end

@@ -2,24 +2,28 @@
 
 ActiveAdmin.register Athlete do
   permit_params(
-    :image, :first_name, :last_name, :birth_date, :phone, :telegram_name, :email, :gender, :description, :location,
+    :image, :first_name, :last_name, :birth_date, :debut_date, :exit_date,
+    :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link,
   )
 
   filter :first_name
   filter :last_name
   filter :birth_date
-  filter :gender, as: :select, collection: Athlete.genders
+  filter :gender, as: :select
 
-  index download_links: [:scv] do
-    selectable_column
+  index download_links: [:scv], row_class: ->(a) { 'inactive' if a.exit_date.present? } do
+    column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
     column :first_name
     column :last_name
     column :birth_date
+    column :debut_date
     column :gender
-    column :phone
-    column(:telegram_name) { |a| telegram_link a }
-    column :email
-    actions
+    column(:fiveverst_link, sortable: false) { |a| a.fiveverst_link.present? }
+    column(:s95_link, sortable: false) { |a| a.s95_link.present? }
+    column(:probeg_link, sortable: false) { |a| a.probeg_link.present? }
+    column(:parkrun_link, sortable: false) { |a| a.parkrun_link.present? }
+    column :exit_date
+    actions dropdown: true
   end
 
   show do
@@ -28,47 +32,33 @@ ActiveAdmin.register Athlete do
       row :last_name
       row :birth_date
       row :gender
-      row :phone
-      row :email
-      row(:telegram_name) { |a| telegram_link a }
-      row(:description) { |a| sanitized_text a.description }
-      row :location
-      row :updated_at
-      row :created_at
+      row :debut_date
+      row :fiveverst_link
+      row :s95_link
+      row :probeg_link
+      row :parkrun_link
+      row :exit_date
+      row(:image) { |a| image_tag a.image.variant(:web) if a.image.attached? }
     end
   end
 
   form do |f|
-    f.inputs do
+    f.inputs 'Личные данные' do
       f.input :image, as: :file
       f.input :first_name
       f.input :last_name
-      f.input :birth_date, start_year: 80.years.ago.year, end_year: 16.years.ago.year
-      f.input :gender
-      f.input :phone
-      f.input :telegram_name
-      f.input :description, as: :quill_editor,
-                            input_html: {
-                              data: {
-                                options: {
-                                  modules: {
-                                    toolbar: [
-                                      %w[bold italic strike],
-                                      %w[blockquote code-block],
-                                      [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-                                      [{ indent: '-1' }, { indent: '+1' }],
-                                      [{ direction: 'rtl' }],
-                                      ['link'],
-                                      ['clean']
-                                    ],
-                                  },
-                                  placeholder: 'Какой же крутой у нас одноклубник...',
-                                  theme: 'snow',
-                                },
-                              },
-                            }
-      f.input :location
-      f.input :email
+      f.input :birth_date, start_year: 80.years.ago.year, end_year: 14.years.ago.year
+      f.input :gender, include_blank: false
+      f.input :debut_date, start_year: 2015, end_year: Date.current.year
+    end
+    f.inputs 'Ссылки на профиль спортсмена' do
+      f.input :parkrun_link
+      f.input :fiveverst_link
+      f.input :s95_link
+      f.input :probeg_link
+    end
+    f.inputs 'Заполняется в случае выхода спортсмена из клуба' do
+      f.input :exit_date, start_year: 2015, end_year: Date.current.year
     end
     f.actions
   end

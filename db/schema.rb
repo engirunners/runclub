@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_01_183508) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_15_154731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,21 +68,27 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_183508) do
     t.string "last_name", null: false
     t.date "birth_date"
     t.integer "gender", null: false
-    t.string "phone"
-    t.string "email"
-    t.string "telegram_name"
-    t.text "description"
-    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "debut_date"
+    t.date "exit_date"
+    t.string "parkrun_link"
+    t.string "fiveverst_link"
+    t.string "s95_link"
+    t.string "probeg_link"
   end
 
   create_table "events", force: :cascade do |t|
     t.date "date"
     t.string "name"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
+    t.time "total_time", default: "2000-01-01 21:00:00", null: false
+    t.integer "category", default: 0, null: false
+    t.string "form"
+    t.integer "position", default: 1, null: false
+    t.integer "places_overall"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -92,22 +98,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_01_183508) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "results", force: :cascade do |t|
     t.bigint "athlete_id", null: false
     t.bigint "event_id", null: false
     t.time "total_time"
     t.float "distance"
-    t.boolean "personal_best", default: false, null: false
-    t.integer "position"
+    t.integer "stage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["athlete_id"], name: "index_results_on_athlete_id"
-    t.index ["event_id"], name: "index_results_on_event_id"
+    t.index ["event_id", "stage"], name: "index_results_on_event_id_and_stage", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Achievement do
+  actions :all, except: [:show]
+
   permit_params :title, :description
 
   filter :title
   filter :description
 
   index download_links: false do
-    selectable_column
     column :title
-    column(:description) { |a| sanitized_text a.description&.truncate(200) }
-    actions
+    column(:description, sortable: false) { |a| sanitized_text a.description }
+    actions dropdown: true
   end
 
   show do
