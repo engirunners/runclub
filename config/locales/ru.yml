@@ -44,8 +44,8 @@ ru:
         exit_date: дата ухода
         gender: пол
         genders:
-          male: мужской
-          female: женский
+          male: М
+          female: Ж
         parkrun_link: паркран
         fiveverst_link: 5 вёрст
         s95_link: S95

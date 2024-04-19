@@ -41,6 +41,10 @@ module ApplicationHelper
     t "activerecord.attributes.event.categories.#{event.category}"
   end
 
+  def human_athlete_gender(athlete)
+    t "activerecord.attributes.athlete.genders.#{athlete.gender}"
+  end
+
   def sanitized_text(text)
     sanitize text, tags: %w[strong em s blockquote pre ol ul li a p], attributes: %w[href rel target]
   end

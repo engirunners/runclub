@@ -6,6 +6,9 @@ ActiveAdmin.register Athlete do
     :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link,
   )
 
+  config.paginate = false
+  config.sort_order = 'last_name_asc'
+
   filter :first_name
   filter :last_name
   filter :birth_date
@@ -17,7 +20,7 @@ ActiveAdmin.register Athlete do
     column :last_name
     column :birth_date
     column :debut_date
-    column :gender
+    column(:gender) { |a| human_athlete_gender a }
     column(:fiveverst_link, sortable: false) { |a| a.fiveverst_link.present? }
     column(:s95_link, sortable: false) { |a| a.s95_link.present? }
     column(:probeg_link, sortable: false) { |a| a.probeg_link.present? }

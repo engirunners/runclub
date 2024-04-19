@@ -9,3 +9,10 @@ ru:
         new_model: 'Добавить админа'
         edit_model: 'Изменить админа'
         delete_model: 'Удалить админа'
+  views:
+    pagination:
+      previous: '←'
+      first: '↞'
+      next: '→'
+      last: '↠'
+      truncate: '&hellip;'
