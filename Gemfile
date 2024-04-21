@@ -8,6 +8,7 @@ gem 'rails', '~> 7.1.2'
 
 gem 'activeadmin'
 gem 'activeadmin_quill_editor'
+gem 'activeadmin-searchable_select'
 gem 'active_storage_validations'
 gem 'bootsnap', require: false
 gem 'bootstrap'

@@ -23,7 +23,7 @@ ActiveAdmin.register Result do
     f.inputs do
       f.input :stage
       f.input :distance
-      f.input :athlete
+      f.input :athlete, as: :searchable_select
       f.input :total_time, as: :time_select, include_seconds: true, ignore_date: true, include_blank: false
     end
     f.actions
