@@ -19,13 +19,11 @@ gem 'pg'
 gem 'puma'
 gem 'rails-i18n'
 gem 'rails_performance'
+gem 'redis', '>= 4.0.1'
 gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
-
-# Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

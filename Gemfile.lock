@@ -442,6 +442,7 @@ DEPENDENCIES
   rails (~> 7.1.2)
   rails-i18n
   rails_performance
+  redis (>= 4.0.1)
   rubocop
   rubocop-factory_bot
   rubocop-performance
