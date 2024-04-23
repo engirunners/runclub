@@ -3,7 +3,10 @@
 ActiveAdmin.register Event do
   actions :all, except: [:show]
 
-  permit_params :date, :name, :location, :total_time, :category, :form, :position, :places_overall
+  permit_params(
+    :date, :name, :location, :total_time, :category, :form,
+    :position, :position_abs, :places_category, :places_overall,
+  )
 
   config.sort_order = 'date_desc'
 
@@ -19,8 +22,10 @@ ActiveAdmin.register Event do
     column(:category) { |e| human_event_category(e) }
     column(:stages) { |e| e.results.count }
     column :form, sortable: false
-    column :position
+    column :position_abs
     column :places_overall
+    column :position
+    column :places_category
     actions dropdown: true do |event|
       item 'Результаты', admin_event_results_path(event)
     end
@@ -34,8 +39,10 @@ ActiveAdmin.register Event do
       f.input :total_time, as: :time_select, include_seconds: true, ignore_date: true, include_blank: false
       f.input :category, include_blank: false
       f.input :form
-      f.input :position
+      f.input :position_abs
       f.input :places_overall
+      f.input :position
+      f.input :places_category
     end
     f.actions
   end

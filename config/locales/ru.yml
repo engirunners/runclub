@@ -63,8 +63,10 @@ ru:
           ff: ЖЖ
         stages: этапов
         form: формат
-        position: место
-        places_overall: всего команд
+        position: место в кат.
+        position_abs: место в абс.
+        places_overall: команд в абс.
+        places_category: команд в кат.
       partner:
         name: название
         link: ссылка
