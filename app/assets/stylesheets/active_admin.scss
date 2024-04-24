@@ -29,8 +29,9 @@ body {
   font-size: 82%;
 }
 
-tr.odd, tr.even {
-  &.inactive {
-    background-color: $table-error-color;
+tr.inactive {
+  td.col-first_name, td.col-last_name {
+    color: white !important;
+    background-color: grey !important;
   }
 }
