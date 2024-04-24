@@ -5,9 +5,6 @@ ActiveAdmin.register Achievement do
 
   permit_params :title, :description
 
-  filter :title
-  filter :description
-
   index download_links: false do
     column :title
     column(:description, sortable: false) { |a| sanitized_text a.description }

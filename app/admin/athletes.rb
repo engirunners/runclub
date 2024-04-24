@@ -9,11 +9,6 @@ ActiveAdmin.register Athlete do
   config.paginate = false
   config.sort_order = 'last_name_asc'
 
-  filter :first_name
-  filter :last_name
-  filter :birth_date
-  filter :gender, as: :select
-
   index download_links: [:scv], row_class: ->(a) { 'inactive' if a.exit_date.present? } do
     column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
     column :first_name

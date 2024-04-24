@@ -10,10 +10,6 @@ ActiveAdmin.register Event do
 
   config.sort_order = 'date_desc'
 
-  filter :date
-  filter :name
-  filter :category, as: :select
-
   index download_links: [:scv] do
     column :date
     column :name

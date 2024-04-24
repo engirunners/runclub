@@ -4,8 +4,6 @@ ActiveAdmin.register User do
   actions :all, except: [:show]
   permit_params :email, :password, :password_confirmation
 
-  config.filters = false
-
   index download_links: false do
     column :email
     column :created_at

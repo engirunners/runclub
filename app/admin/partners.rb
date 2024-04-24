@@ -7,8 +7,6 @@ ActiveAdmin.register Partner do
 
   permit_params :name, :link, :logo
 
-  filter :name
-
   index download_links: false do
     column(:logo) { |p| image_tag p.logo.variant(:thumb) if p.logo.attached? }
     column :name

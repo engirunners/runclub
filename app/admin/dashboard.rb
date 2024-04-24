@@ -8,8 +8,8 @@ ActiveAdmin.register_page 'Dashboard' do
       column do
         panel 'Недавние старты' do
           ul do
-            Event.order(date: :desc).limit(5).map do |event|
-              li link_to(event.name, admin_event_path(event))
+            Event.order(date: :desc).limit(10).map do |event|
+              li link_to("#{l event.date} - #{event.name}", admin_event_path(event))
             end
           end
         end

@@ -8,8 +8,4 @@ class Partner < ApplicationRecord
   validates :name, :link, presence: true
   validates :logo, attached: true
   validates :image, attached: true
-
-  def self.ransackable_attributes(_auth_object = nil)
-    %w[link name]
-  end
 end

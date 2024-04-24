@@ -6,7 +6,6 @@ ActiveAdmin.register Result do
 
   permit_params :athlete_id, :event_id, :total_time, :stage, :distance
 
-  config.filters = false
   config.sort_order = 'stage_asc'
 
   index download_links: [:scv] do
