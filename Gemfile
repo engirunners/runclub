@@ -13,6 +13,7 @@ gem 'active_storage_validations'
 gem 'bootsnap', require: false
 gem 'bootstrap'
 gem 'devise'
+gem 'devise-i18n'
 gem 'font-awesome-sass'
 gem 'importmap-rails'
 gem 'pg'
