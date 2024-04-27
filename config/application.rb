@@ -38,5 +38,15 @@ module RunningClub
     #
     config.time_zone = 'Europe/Moscow'
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      **Rails.application.credentials.mailer,
+      authentication: :plain,
+      enable_starttls_auto: true,
+      open_timeout: 5,
+      read_timeout: 5,
+    }
+    config.action_mailer.preview_paths << "#{Rails.root}/spec/mailers/previews"
   end
 end

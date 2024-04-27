@@ -55,4 +55,6 @@ cap production nginx:site:enable
 # disable PasswordAuthentication -> no
 sudo vim /etc/ssh/sshd_config
 sudo  systemctl restart ssh
+
+# install Redis
 ```
