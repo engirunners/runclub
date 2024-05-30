@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="offset-md-1 col-md-10">
+    <h1>Эстафеты</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Дата</th>
+          <th scope="col">Название</th>
+          <th scope="col">Формат</th>
+          <th scope="col">Место</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <% @events.each do |event| %>
+          <tr>
+            <th scope="row"><%= l event.date, format: :long %></th>
+            <td><%= event.name %></td>
+            <td><%= event.form %></td>
+            <td><%= event.position %> (<%= event.position_abs %>)</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

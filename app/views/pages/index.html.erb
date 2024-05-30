@@ -14,28 +14,25 @@
         <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-people-group"></i></div>
         <h2 class="h4 fw-bolder">Состав клуба</h2>
         <p>Хорошие быстрые ребята</p>
-        <a class="text-decoration-none icon-link" href="#!">
-          Смотреть
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <%= link_to athletes_path, class: 'text-decoration-none icon-link' do %>
+          Смотреть <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
       </div>
       <div class="col-lg-4 mb-5 mb-lg-0">
         <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-table"></i></div>
-        <h2 class="h4 fw-bolder">Статистика</h2>
+        <h2 class="h4 fw-bolder">Эстафеты</h2>
         <p>Эстафеты и показанные результаты</p>
-        <a class="text-decoration-none icon-link" href="#!">
-          Смотреть
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <%= link_to events_path, class: 'text-decoration-none icon-link' do %>
+          Смотреть <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
       </div>
       <div class="col-lg-4">
         <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-trophy"></i></div>
         <h2 class="h4 fw-bolder">Достижения</h2>
         <p>Об успехах нашего клуба</p>
-        <a class="text-decoration-none icon-link" href="#!">
-          Смотреть
-          <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <%= link_to achievements_path, class: 'text-decoration-none icon-link' do %>
+          Смотреть <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
       </div>
     </div>
   </div>
