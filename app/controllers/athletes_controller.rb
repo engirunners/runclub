@@ -2,7 +2,7 @@
 
 class AthletesController < ApplicationController
   def index
-    @athletes = Athlete.all
+    @athletes = Athlete.active.order(:last_name)
   end
 
   def show

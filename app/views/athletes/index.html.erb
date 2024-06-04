@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="offset-md-1 col-md-10 pb-5">
+    <h1 class="my-3">Участники клуба</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <% @athletes.each do |athlete| %>
+        <div class="col">
+          <div class="card bg-body-tertiary mb-3 border-primary border-opacity-25 h-100 shadow">
+            <div class="row g-0">
+              <div class="col-sm-4 p-3 d-flex justify-content-center align-items-start">
+                <%= image_tag athlete.image.variant(:web), class: 'img-fluid rounded', alt: athlete.name, loading: 'lazy' if athlete.image.attached? %>
+              </div>
+              <div class="col-sm-8">
+                <div class="card-body">
+                  <h5 class="card-title text-uppercase"><%= athlete.name %></h5>
+                  <p class="card-text">
+                    <%= link_to 'descr', athlete, class: 'stretched-link text-decoration-none text-body' %>
+                  </p>
+                  <% if athlete.debut_date %>
+                    <p class="card-text"><small class="text-muted">Дата вступления: <%= l athlete.debut_date %></small></p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
