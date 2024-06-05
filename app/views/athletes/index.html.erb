@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row mx-1 mx-md-0">
   <div class="offset-md-1 col-md-10 pb-5">
     <h1 class="my-3">Участники клуба</h1>
 
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-lg-2 g-4">
       <% @athletes.each do |athlete| %>
         <div class="col">
           <div class="card bg-body-tertiary mb-3 border-primary border-opacity-25 h-100 shadow">
@@ -14,7 +14,7 @@
                 <div class="card-body">
                   <h5 class="card-title text-uppercase"><%= athlete.name %></h5>
                   <p class="card-text">
-                    <%= link_to 'descr', athlete, class: 'stretched-link text-decoration-none text-body' %>
+                    <%= link_to "Количество выступлений за клуб #{athlete.results.count}.", athlete, class: 'stretched-link text-decoration-none text-body' %>
                   </p>
                   <% if athlete.debut_date %>
                     <p class="card-text"><small class="text-muted">Дата вступления: <%= l athlete.debut_date %></small></p>
