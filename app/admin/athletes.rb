@@ -11,6 +11,7 @@ ActiveAdmin.register Athlete do
 
   index download_links: [:scv], row_class: ->(a) { 'inactive' if a.exit_date.present? } do
     column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
+    column :nickname
     column :first_name
     column :last_name
     column :birth_date
@@ -21,11 +22,13 @@ ActiveAdmin.register Athlete do
     column(:probeg_link, sortable: false) { |a| a.probeg_link.present? }
     column(:parkrun_link, sortable: false) { |a| a.parkrun_link.present? }
     column :exit_date
+
     actions dropdown: true
   end
 
   show do
     attributes_table do
+      row :nickname
       row :first_name
       row :last_name
       row :birth_date
@@ -43,6 +46,7 @@ ActiveAdmin.register Athlete do
   form do |f|
     f.inputs 'Личные данные' do
       f.input :image, as: :file
+      f.input :nickname, required: true
       f.input :first_name
       f.input :last_name
       f.input :birth_date, start_year: 80.years.ago.year, end_year: 14.years.ago.year

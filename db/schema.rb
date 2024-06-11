@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_23_163348) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_11_194343) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_163348) do
     t.string "fiveverst_link"
     t.string "s95_link"
     t.string "probeg_link"
+    t.string "nickname"
+    t.index ["nickname"], name: "index_athletes_on_nickname", unique: true
   end
 
   create_table "events", force: :cascade do |t|
@@ -84,7 +86,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_23_163348) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "location"
-    t.time "total_time", default: "2000-01-01 21:00:00", null: false
+    t.time "total_time"
     t.integer "category", default: 0, null: false
     t.string "form"
     t.integer "position", default: 1, null: false
