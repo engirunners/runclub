@@ -8,7 +8,7 @@ ActiveAdmin.register Result do
 
   config.sort_order = 'stage_asc'
 
-  index download_links: [:scv] do
+  index do
     column :stage
     column :distance
     column :athlete

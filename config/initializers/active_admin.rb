@@ -268,6 +268,7 @@ ActiveAdmin.setup do |config|
   #
   # You can disable download links on resource listing pages,
   # or customize the formats shown per namespace/globally
+  config.download_links = false
   #
   # To disable/customize for the :admin namespace:
   #

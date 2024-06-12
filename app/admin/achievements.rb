@@ -5,7 +5,7 @@ ActiveAdmin.register Achievement do
 
   permit_params :title, :description
 
-  index download_links: false do
+  index do
     column :title
     column(:description, sortable: false) { |a| sanitized_text a.description }
     actions dropdown: true

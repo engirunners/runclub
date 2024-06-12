@@ -10,7 +10,7 @@ ActiveAdmin.register Event do
 
   config.sort_order = 'date_desc'
 
-  index download_links: [:scv] do
+  index do
     column :date
     column :name
     column :location, sortable: false

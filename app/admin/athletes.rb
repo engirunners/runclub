@@ -9,14 +9,14 @@ ActiveAdmin.register Athlete do
   config.paginate = false
   config.sort_order = 'last_name_asc'
 
-  index download_links: [:scv], row_class: ->(a) { 'inactive' if a.exit_date.present? } do
+  index row_class: ->(a) { 'inactive' if a.exit_date.present? } do
     column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
     column :nickname
     column :first_name
     column :last_name
+    column(:gender) { |a| human_athlete_gender a }
     column :birth_date
     column :debut_date
-    column(:gender) { |a| human_athlete_gender a }
     column(:fiveverst_link, sortable: false) { |a| a.fiveverst_link.present? }
     column(:s95_link, sortable: false) { |a| a.s95_link.present? }
     column(:probeg_link, sortable: false) { |a| a.probeg_link.present? }
