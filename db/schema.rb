@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_11_194343) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_194539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,7 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_194343) do
     t.string "fiveverst_link"
     t.string "s95_link"
     t.string "probeg_link"
-    t.string "nickname"
+    t.string "nickname", null: false
     t.index ["nickname"], name: "index_athletes_on_nickname", unique: true
   end
 

@@ -9,7 +9,7 @@ class Athlete < ApplicationRecord
   end
 
   validates :first_name, :last_name, presence: true
-  validates :nickname, uniqueness: true, format: { with: /\A[a-z_-]{3,}\z/ } # TODO: presence: true
+  validates :nickname, uniqueness: true, format: { with: /\A[a-z_-]{3,}\z/ }, presence: true
 
   scope :active, -> { where(exit_date: nil) }
 
