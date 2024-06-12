@@ -6,6 +6,6 @@ class AthletesController < ApplicationController
   end
 
   def show
-    @athlete = Athlete.find(params[:id])
+    @athlete = Athlete.find_by!(nickname: params[:nickname])
   end
 end

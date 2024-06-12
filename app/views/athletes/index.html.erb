@@ -18,7 +18,7 @@
                 <div class="card-body">
                   <h5 class="card-title text-uppercase"><%= athlete.name %></h5>
                   <p class="card-text">
-                    <%= link_to "Количество выступлений за клуб #{athlete.results.count}.", athlete, class: 'stretched-link text-decoration-none text-body' %>
+                    <%= link_to "Количество выступлений за клуб #{athlete.results.count}.", athlete_path(athlete.nickname), class: 'stretched-link text-decoration-none text-body' %>
                   </p>
                   <% if athlete.debut_date %>
                     <p class="card-text"><small class="text-muted">Дата дебюта: <%= l athlete.debut_date %></small></p>

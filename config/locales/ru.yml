@@ -37,6 +37,7 @@ ru:
         description: описание
       athlete:
         image: фото
+        nickname: ник
         first_name: имя
         last_name: фамилия
         birth_date: дата рождения
