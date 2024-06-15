@@ -16,6 +16,11 @@ ru:
         few: эстафеты
         many: эстафет
         other: Эстафеты
+      command:
+        one: команда
+        few: команды
+        many: команд
+        other: Команды
       partner:
         one: партнёр
         few: партнёра
@@ -56,6 +61,8 @@ ru:
         date: дата
         name: название
         location: локация
+      command:
+        name: название
         total_time: время
         category: категория
         categories:

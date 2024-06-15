@@ -1,14 +1,21 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Result do
-  belongs_to :event
+  belongs_to :command
   actions :all, except: [:show]
 
-  permit_params :athlete_id, :event_id, :total_time, :stage, :distance
+  permit_params :athlete_id, :command_id, :total_time, :stage, :distance
 
   config.sort_order = 'stage_asc'
 
-  index do
+  breadcrumb do
+    [
+      link_to('Панель управления', admin_root_path),
+      link_to('Эстафеты', admin_events_path),
+    ]
+  end
+
+  index title: -> { "#{@command.event.name} - команда '#{@command.name || @command.id}'" } do
     column :stage
     column :distance
     column :athlete

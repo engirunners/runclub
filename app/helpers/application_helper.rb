@@ -37,8 +37,8 @@ module ApplicationHelper
     (((time.hour * 60) + time.min) * 60) + time.sec
   end
 
-  def human_event_category(event)
-    t "activerecord.attributes.event.categories.#{event.category}"
+  def human_command_category(event)
+    t "activerecord.attributes.command.categories.#{event.category}"
   end
 
   def human_athlete_gender(athlete)
