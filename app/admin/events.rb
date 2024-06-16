@@ -9,13 +9,11 @@ ActiveAdmin.register Event do
 
   index do
     column :date
-    column :name
+    column(:name) { |e| link_to e.name, admin_event_commands_path(e) }
     column(:commands_count) { |e| e.commands.count }
     column :location, sortable: false
 
-    actions dropdown: true do |event|
-      item 'Команды', admin_event_commands_path(event)
-    end
+    actions dropdown: true
   end
 
   form do |f|

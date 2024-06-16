@@ -19,12 +19,11 @@ class CreateCommands < ActiveRecord::Migration[7.1]
     add_reference :results, :command, foreign_key: true, index: false
     add_index :results, %i[command_id stage], unique: true
 
-
-    Event.all.find_each do |event|
+    Event.find_each do |event|
       command = event.commands.create!(
         event.attributes.slice(
-          'total_time', 'category', 'form', 'position', 'places_overall', 'position_abs', 'places_category'
-        )
+          'total_time', 'category', 'form', 'position', 'places_overall', 'position_abs', 'places_category',
+        ),
       )
       event.results.find_each do |result|
         result.update!(command:)
@@ -34,7 +33,8 @@ class CreateCommands < ActiveRecord::Migration[7.1]
     change_column_null :results, :command_id, false
     remove_reference :results, :event, index: true
 
-    change_table :events do |t|
+    # rubocop:disable Rails/ReversibleMigration
+    change_table :events, bulk: true do |t|
       t.remove :total_time
       t.remove :category
       t.remove :form
@@ -43,5 +43,6 @@ class CreateCommands < ActiveRecord::Migration[7.1]
       t.remove :position_abs
       t.remove :places_category
     end
+    # rubocop:enable Rails/ReversibleMigration
   end
 end

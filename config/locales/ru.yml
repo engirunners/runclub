@@ -64,7 +64,7 @@ ru:
         commands_count: команды
       command:
         name: название
-        total_time: время
+        total_time: результат
         category: категория
         categories:
           mf: МЖ
