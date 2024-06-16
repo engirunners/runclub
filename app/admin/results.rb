@@ -2,6 +2,9 @@
 
 ActiveAdmin.register Result do
   belongs_to :command
+
+  includes :athlete
+
   actions :all, except: [:show]
 
   permit_params :athlete_id, :command_id, :total_time, :stage, :distance

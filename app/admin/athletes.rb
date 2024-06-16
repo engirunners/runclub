@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 ActiveAdmin.register Athlete do
+  includes image_attachment: :blob
+
   permit_params(
     :nickname, :image, :first_name, :last_name, :birth_date, :debut_date, :exit_date,
     :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link,

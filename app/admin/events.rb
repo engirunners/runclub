@@ -10,7 +10,7 @@ ActiveAdmin.register Event do
   index do
     column :date
     column(:name) { |e| link_to e.name, admin_event_commands_path(e) }
-    column(:commands_count) { |e| e.commands.count }
+    column(:commands_count) { |e| e.commands.size }
     column :location, sortable: false
 
     actions dropdown: true

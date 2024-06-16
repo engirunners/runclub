@@ -14,7 +14,7 @@ ActiveAdmin.register Command do
     column :name
     column(:total_time) { |c| human_result_time c.total_time }
     column(:category) { |c| human_command_category(c) }
-    column(:stages) { |c| c.results.count }
+    column(:stages) { |c| c.results.size }
     column :form, sortable: false
     column :position_abs
     column :places_overall
