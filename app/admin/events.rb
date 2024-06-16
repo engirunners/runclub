@@ -10,6 +10,7 @@ ActiveAdmin.register Event do
   index do
     column :date
     column :name
+    column(:commands_count) { |e| e.commands.count }
     column :location, sortable: false
 
     actions dropdown: true do |event|
@@ -26,7 +27,7 @@ ActiveAdmin.register Event do
     f.actions
   end
 
-  action_item :commands, only: %i[show edit] do
+  action_item :commands, only: :edit do
     link_to 'Команды', admin_event_commands_path(resource)
   end
 end

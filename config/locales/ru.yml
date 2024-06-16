@@ -61,6 +61,7 @@ ru:
         date: дата
         name: название
         location: локация
+        commands_count: команды
       command:
         name: название
         total_time: время
