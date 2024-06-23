@@ -89,3 +89,6 @@ ru:
         created_at: создан
         password: пароль
         password_confirmation: пароль ещё раз
+  date:
+    formats:
+      brief: '%-d %B'

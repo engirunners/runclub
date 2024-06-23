@@ -1,12 +1,11 @@
 <!-- Header -->
 <div class="py-5 bg-image-full" style="background-image: url('<%= asset_path 'plate.png' %>');">
-  <div class="text-center my-2">
-    <h1 class="text-dark fs-1 fw-bold">Эстафеты</h1>
-  </div>
+  <div class="my-3"></div>
 </div>
 <!-- Content -->
 <div class="row mt-2">
   <div class="offset-md-1 col-md-10">
+    <h1 class="mb-3">Эстафеты</h1>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -22,7 +21,7 @@
           </tr>
           <% events.each do |event| %>
             <tr>
-              <th scope="row"><%= l event.date, format: :long %></th>
+              <th scope="row"><%= l event.date, format: :brief %></th>
               <td><%= event.name %></td>
               <td><%= event.commands.size %></td>
             </tr>

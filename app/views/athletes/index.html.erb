@@ -1,12 +1,11 @@
 <!-- Header -->
 <div class="py-5 bg-image-full" style="background-image: url('<%= asset_path 'plate.png' %>')">
-  <div class="text-center my-2">
-    <h1 class="text-dark fs-1 fw-bold">Участники клуба</h1>
-  </div>
+  <div class="my-3"></div>
 </div>
 <!-- Content -->
 <div class="row mt-3 mx-1 mx-md-0">
   <div class="offset-md-1 col-md-10 pb-5">
+    <h1 class="mb-3">Участники клуба</h1>
     <div class="row row-cols-1 row-cols-lg-2 g-4">
       <% @athletes.each do |athlete| %>
         <div class="col">
@@ -17,9 +16,15 @@
               </div>
               <div class="col-sm-8">
                 <div class="card-body">
-                  <h5 class="card-title text-uppercase"><%= athlete.name %></h5>
+                  <h5 class="card-title text-uppercase">
+                    <%= link_to athlete.name, athlete_path(athlete.nickname), class: 'stretched-link text-decoration-none text-body' %>
+                  </h5>
                   <p class="card-text">
-                    <%= link_to "Количество выступлений за клуб #{athlete.results.count}.", athlete_path(athlete.nickname), class: 'stretched-link text-decoration-none text-body' %>
+                    <% if @results_count.key? athlete.id %>
+                      Количество выступлений за клуб <%= @results_count[athlete.id] %>.
+                    <% else %>
+                      Пока не было выступлений за клуб.
+                    <% end %>
                   </p>
                   <% if athlete.debut_date %>
                     <p class="card-text"><small class="text-muted">Дата дебюта: <%= l athlete.debut_date %></small></p>
