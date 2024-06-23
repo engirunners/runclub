@@ -1,11 +1,11 @@
 <!-- Header -->
-<div class="py-5 bg-image-full" style="background-image: url('<%= asset_path 'plate.png' %>');">
+<div class="py-5 bg-image-full" style="background-image: url('/images/plate.png')">
   <div class="my-3"></div>
 </div>
 <!-- Content -->
 <div class="row mt-2">
   <div class="offset-md-1 col-md-10">
-    <h1 class="mb-3">Эстафеты</h1>
+    <h1 class="mb-3 text-center text-danger">Эстафеты</h1>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -17,7 +17,7 @@
       <tbody class="table-group-divider">
         <% @events_grouped_by_year.each do |year, events| %>
           <tr class="table-light table-active">
-            <th colspan="3" class="text-danger text-center h3"><%= year %> год</th>
+            <th colspan="3" class="text-danger text-center fw-bold h3"><%= year %> год</th>
           </tr>
           <% events.each do |event| %>
             <tr>

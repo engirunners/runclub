@@ -1,37 +1,34 @@
 <!-- Header -->
-<header class="py-3 bg-image-full" style="background-image: url('<%= asset_path 'plate.png' %>')">
-  <div class="text-center my-5">
-    <%= image_tag 'logo_150.png', class: 'img-fluid rounded-circle mb-4', alt:'Логотип клуба' %>
-    <h1 class="text-dark fs-1 fw-bold">Engirunners</h1>
-    <h3 class="text-white mb-0">Клуб быстрых технарей. Основан в 2015 году</h3>
-  </div>
-</header>
+<header style="background-image: url('/images/main_header.png'); background-position: center; background-size: cover; height: 45vh;"></header>
 <!-- Features section -->
-<section class="py-5 border-bottom" id="features">
-  <div class="container px-5 my-5">
-    <div class="row gx-5">
-      <div class="col-lg-4 mb-5 mb-lg-0">
+<div class="text-center m-5">
+  <h1 class="fw-1 text-danger fw-bold">Клуб быстрых технарей</h1>
+</div>
+<section class="pb-5 border-bottom">
+  <div class="container">
+    <div class="row justify-content-center gap-4 px-4">
+      <div class="col-lg-3 rounded-4 bg-body-tertiary border border-primary border-opacity-25 shadow border p-4">
         <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-people-group"></i></div>
-        <h2 class="h4 fw-bolder">Состав клуба</h2>
+        <h2 class="h4 fw-bolder">Состав</h2>
         <p>Хорошие быстрые ребята</p>
         <%= link_to athletes_path, class: 'text-decoration-none icon-link' do %>
-          Смотреть <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-regular fa-eye"></i> Смотреть
         <% end %>
       </div>
-      <div class="col-lg-4 mb-5 mb-lg-0">
+      <div class="col-lg-3 rounded-4 bg-body-tertiary border border-primary border-opacity-25 shadow border p-4">
         <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-table"></i></div>
         <h2 class="h4 fw-bolder">Эстафеты</h2>
         <p>Эстафеты и показанные результаты</p>
         <%= link_to events_path, class: 'text-decoration-none icon-link' do %>
-          Смотреть <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-regular fa-eye"></i> Смотреть
         <% end %>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-3 rounded-4 bg-body-tertiary border border-primary border-opacity-25 shadow p-4">
         <div class="feature bg-danger bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-trophy"></i></div>
         <h2 class="h4 fw-bolder">Достижения</h2>
         <p>Об успехах нашего клуба</p>
         <%= link_to achievements_path, class: 'text-decoration-none icon-link' do %>
-          Смотреть <i class="fa-solid fa-arrow-right"></i>
+          <i class="fa-regular fa-eye"></i> Смотреть
         <% end %>
       </div>
     </div>
@@ -46,9 +43,9 @@
     </div>
     <div class="row gx-5 justify-content-center">
       <% Partner.all.find_each do |partner| %>
-        <div class="col-lg-6 col-xl-2">
+        <div class="col-6 col-md-3 col-xl-2">
           <%= link_to partner.link do %>
-            <div class="card mb-3 mb-xl-0">
+            <div class="card mb-3 mb-xl-0 shadow">
               <%= image_tag partner.logo.variant(:thumb), class: 'card-img', alt: partner.name, title: partner.name %>
             </div>
           <% end %>
@@ -79,6 +76,6 @@
   </div>
 </section>
 <!-- Header -->
-<div class="bg-image-full" style="background-image: url('<%= asset_path 'plate.png' %>')">
+<div class="bg-image-full" style="background-image: url('/images/plate.png')">
   <div style="height: 5rem"></div>
 </div>
