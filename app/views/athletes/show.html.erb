@@ -1,18 +1,50 @@
 <!-- Header -->
-<div class="py-5 bg-image-full" style="background-image: url('/images/plate.png')">
-  <div class="text-center my-2">
-    <h1 class="text-dark fs-1 fw-bold"><%= @athlete.name %></h1>
+<%= render partial: 'common/header' %>
+<!-- Content -->
+<h1 class="mb-3 text-center text-danger"><%= @athlete.name %></h1>
+
+<div class="row">
+  <div class="col-md-10 offset-md-1">
+    <p class="text-center">
+      <% %w[probeg fiveverst s95 parkrun].each do |contact_type| %>
+        <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
+
+        <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
+          <%=
+            image_tag(
+              "/contacts/#{contact_type}.png",
+              class: 'rounded-circle border border-opacity-25 mx-1',
+              style: 'width: 50px;',
+              alt: contact_type,
+              title: contact_type.titleize,
+            )
+          %>
+        <% end %>
+      <% end %>
+    </p>
+
+    <h2>Выступления за клуб</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Дата</th>
+          <th scope="col">Эстафета</th>
+          <th scope="col" class="hidden-on-phone">Формат</th>
+          <th scope="col">Место</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <% @command_results.each.with_index(1) do |command_result, idx| %>
+          <tr>
+            <th scope="row"><%= idx %></th>
+            <td><%= l command_result.event.date %></td>
+            <td><%= command_result.event.name %></td>
+            <td class="hidden-on-phone"><%= command_result.form %></td>
+            <td><%= command_result.position %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
-<h2>Выступления за клуб</h2>
-
-<h2>Профили</h2>
-<p>
-  <% %i[s95 probeg fiveverst parkrun].each do |contact_type| %>
-    <% next unless (contact_url = @athlete.public_send("#{contact_type}_link")).present? %>
-
-    <%= link_to contact_url, class: 'text-decoration-none' do %>
-      <%= image_tag "/contacts/#{contact_type}.png", class: 'rounded-circle border border-opacity-25', style: 'width: 50px;' %>
-    <% end %>
-  <% end %>
-</p>

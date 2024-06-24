@@ -8,5 +8,7 @@ class AthletesController < ApplicationController
 
   def show
     @athlete = Athlete.find_by!(nickname: params[:nickname])
+    @command_results =
+      Command.joins(:results).eager_load(:event).where(results: { athlete_id: @athlete.id }).order(date: :desc).distinct
   end
 end

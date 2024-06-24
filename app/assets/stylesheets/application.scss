@@ -29,3 +29,9 @@ $font-family-sans-serif: "Open Sans", system-ui, -apple-system, "Segoe UI", Robo
   width: 3rem;
   font-size: 1.5rem;
 }
+
+@include media(phoneScreen) {
+  .hidden-on-phone {
+    display: none;
+  }
+}
