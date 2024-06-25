@@ -34,30 +34,16 @@ gem 'image_processing', '~> 1.2'
 
 group :development do
   gem 'bullet'
+  gem 'byebug'
+  gem 'database_consistency', require: false
+
+  # deployment
+  gem 'bcrypt_pbkdf', '~> 1.0'
   gem 'capistrano', '~> 3.17', require: false
   gem 'capistrano3-nginx', '~> 2.0', require: false
   gem 'capistrano3-puma', '6.0.0.beta.1', require: false
   gem 'capistrano-bundler', '~> 2.0', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rbenv', '~> 2.2', require: false
-  gem 'database_consistency', require: false
-
-  gem 'bcrypt_pbkdf', '~> 1.0'
   gem 'ed25519', '~> 1.3'
-end
-
-group :development, :test do
-  gem 'byebug'
-  gem 'rubocop', require: false
-  gem 'rubocop-factory_bot', require: false
-  gem 'rubocop-performance', require: false
-  gem 'rubocop-rails', require: false
-  gem 'rubocop-rake', require: false
-  gem 'rubocop-rspec', require: false
-end
-
-group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
-  gem 'selenium-webdriver'
 end

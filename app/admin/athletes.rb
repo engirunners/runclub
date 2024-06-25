@@ -11,7 +11,7 @@ ActiveAdmin.register Athlete do
   config.paginate = false
   config.sort_order = 'last_name_asc'
 
-  index row_class: ->(a) { 'inactive' if a.exit_date.present? } do
+  index row_class: ->(a) { 'ex' if a.exit_date.present? } do
     column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
     column :nickname
     column :first_name

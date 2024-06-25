@@ -1,9 +1,6 @@
 require:
-  - rubocop-factory_bot
   - rubocop-rails
-  - rubocop-rake
   - rubocop-performance
-  - rubocop-rspec
 
 # METRICS
 Metrics/AbcSize:
@@ -36,8 +33,10 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'config.ru'
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
 Style/TrailingCommaInHashLiteral:
-  EnforcedStyleForMultiline: comma
+  EnforcedStyleForMultiline: consistent_comma
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: consistent_comma
 Style/HashSyntax:

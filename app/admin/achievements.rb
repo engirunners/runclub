@@ -35,7 +35,7 @@ ActiveAdmin.register Achievement do
                                       [{ indent: '-1' }, { indent: '+1' }],
                                       [{ direction: 'rtl' }],
                                       ['link'],
-                                      ['clean']
+                                      ['clean'],
                                     ],
                                   },
                                   placeholder: 'Достижение невероятных результатов...',

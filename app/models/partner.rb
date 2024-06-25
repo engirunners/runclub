@@ -7,5 +7,4 @@ class Partner < ApplicationRecord
 
   validates :name, :link, presence: true
   validates :logo, attached: true
-  validates :image, attached: true
 end
