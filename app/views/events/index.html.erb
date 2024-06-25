@@ -9,7 +9,7 @@
         <tr>
           <th scope="col">Дата</th>
           <th scope="col">Название</th>
-          <th scope="col">Наших команд</th>
+          <th scope="col" class="text-center">Наших команд</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
@@ -19,9 +19,12 @@
           </tr>
           <% events.each do |event| %>
             <tr>
-              <th scope="row"><%= l event.date, format: :brief %></th>
-              <td><%= event.name %></td>
-              <td><%= event.commands.size %></td>
+              <th scope="row">
+                <span class="d-none d-sm-block"><%= l event.date, format: :brief %></span>
+                <span class="d-block d-sm-none"><%= l event.date, format: :short %></span>
+              </th>
+              <td><%= link_to event.name, event %></td>
+              <td class="text-center"><%= event.commands.size %></td>
             </tr>
           <% end %>
         <% end %>

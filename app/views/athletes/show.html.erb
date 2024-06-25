@@ -31,17 +31,18 @@
           <th scope="col">Дата</th>
           <th scope="col">Эстафета</th>
           <th scope="col" class="hidden-on-phone">Формат</th>
-          <th scope="col">Место</th>
+          <th scope="col" class="text-center">Место</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <% @command_results.each.with_index(1) do |command_result, idx| %>
+        <% total_count = @command_results.size %>
+        <% @command_results.each_with_index do |command_result, idx| %>
           <tr>
-            <th scope="row"><%= idx %></th>
+            <th scope="row"><%= total_count - idx %></th>
             <td><%= l command_result.event.date %></td>
-            <td><%= command_result.event.name %></td>
+            <td><%= link_to command_result.event.name, command_result.event %></td>
             <td class="hidden-on-phone"><%= command_result.form %></td>
-            <td><%= command_result.position %></td>
+            <td class="text-center"><%= command_result.position %></td>
           </tr>
         <% end %>
       </tbody>

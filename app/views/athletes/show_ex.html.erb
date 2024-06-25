@@ -1,0 +1,9 @@
+<!-- Header -->
+<%= render partial: 'common/header' %>
+<!-- Content -->
+<div class="text-center">
+  <h1 class="mb-3 text-center text-danger"><%= @athlete.name %></h1>
+
+  <p><span class="fw-bold">Дата дебюта:</span> <%= l @athlete.debut_date, format: :long %> года</p>
+  <p><span class="fw-bold">Дата ухода:</span> <%= l @athlete.exit_date, format: :long %> года</p>
+</div>
