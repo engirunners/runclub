@@ -21,6 +21,10 @@ $font-family-sans-serif: "Open Sans", system-ui, -apple-system, "Segoe UI", Robo
   }
 }
 
+body {
+  min-height: 100vh;
+}
+
 .feature {
   display: inline-flex;
   align-items: center;
