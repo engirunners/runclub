@@ -2,6 +2,6 @@
 
 class AchievementsController < ApplicationController
   def index
-    @achievements = Achievement.all
+    @achievements = Achievement.order(created_at: :desc)
   end
 end

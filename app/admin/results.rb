@@ -18,9 +18,9 @@ ActiveAdmin.register Result do
     ]
   end
 
-  index title: -> { "#{@command.event.name} - команда '#{@command.name || @command.id}'" } do
+  index title: -> { "#{@command.event.name} - команда \"#{@command.name || @command.id}\"" } do
     column :stage
-    column :distance
+    column(:distance) { |r| number_with_delimiter r.distance }
     column :athlete
     column(:total_time) { |r| human_result_time r.total_time }
     column(:pace) { |r| human_result_pace r.total_time, r.distance }

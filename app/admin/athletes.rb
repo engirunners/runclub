@@ -34,7 +34,7 @@ ActiveAdmin.register Athlete do
       row :first_name
       row :last_name
       row :birth_date
-      row :gender
+      row(:gender) { |a| human_athlete_gender a }
       row :debut_date
       row :fiveverst_link
       row :s95_link

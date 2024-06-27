@@ -25,7 +25,7 @@ ActiveAdmin.register_page 'Dashboard' do
     div class: 'blank_slate_container', id: 'dashboard_default_message' do
       span class: 'blank_slate' do
         span 'Страничка управления сайтом'
-        small 'Тут добавить какую-то инфу'
+        small 'Тут можно добавить какую-то инфу'
       end
     end
   end

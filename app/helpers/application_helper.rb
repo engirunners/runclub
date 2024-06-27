@@ -45,6 +45,13 @@ module ApplicationHelper
     t "activerecord.attributes.athlete.genders.#{athlete.gender}"
   end
 
+  def human_distance(distance)
+    return "#{(1000 * distance).to_i}м" if distance < 1
+    return format('%d', distance) if distance == distance.to_i
+
+    number_with_delimiter distance
+  end
+
   def sanitized_text(text)
     sanitize text, tags: %w[strong em s blockquote pre ol ul li a p], attributes: %w[href rel target]
   end
