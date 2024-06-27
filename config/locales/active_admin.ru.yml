@@ -9,6 +9,14 @@ ru:
         new_model: 'Добавить админа'
         edit_model: 'Изменить админа'
         delete_model: 'Удалить админа'
+      event:
+        new_model: 'Добавить эстафету'
+        edit_model: 'Изменить эстафету'
+        delete_model: 'Удалить эстафету'
+      partner:
+        new_model: 'Добавить партнёра'
+        edit_model: 'Изменить партнёра'
+        delete_model: 'Удалить партнёра'
   views:
     pagination:
       previous: '←'
