@@ -38,7 +38,7 @@ group :development do
   gem 'database_consistency', require: false
 
   # deployment
-  gem 'bcrypt_pbkdf', '~> 1.0'
+  gem 'bcrypt_pbkdf', '~> 1.1'
   gem 'capistrano', '~> 3.17', require: false
   gem 'capistrano3-nginx', '~> 2.0', require: false
   gem 'capistrano3-puma', '6.0.0.beta.1', require: false
