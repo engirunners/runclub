@@ -1,29 +1,53 @@
 <!-- Header -->
 <%= render 'common/header' %>
 <!-- Content -->
-<h1 class="mb-3 text-center text-danger"><%= @athlete.name %></h1>
-
 <div class="row mx-0">
   <div class="col-md-10 offset-md-1">
-    <p class="text-center">
-      <% %w[probeg fiveverst s95 parkrun].each do |contact_type| %>
-        <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
-
-        <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
-          <%=
-            image_tag(
-              "/contacts/#{contact_type}.png",
-              class: 'rounded-circle border border-opacity-25 mx-1',
-              style: 'width: 50px;',
-              alt: contact_type,
-              title: contact_type.titleize,
-            )
-          %>
-        <% end %>
+    <div class="row mx-0 mt-3">
+      <% athlete_with_photo = @athlete.image.attached? %>
+      <% if athlete_with_photo %>
+        <div class="col-md-4">
+          <%= image_tag @athlete.image.variant(:web), class: 'img-fluid', alt: @athlete.name %>
+        </div>
       <% end %>
-    </p>
+      <div class="<%= 'offset-md-2 ' unless athlete_with_photo %>col-md-8">
+        <div class="card-body">
+          <h1 class="my-3 text-center text-danger"><%= @athlete.name %></h1>
+          <p class="card-text text-center">Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %></p>
+          <p class="card-text text-center">
+            <% positions_count = @athlete.results.joins(:command).distinct.select(:command_id).group(:position).count %>
+            <% if positions_count.key?(1) %>
+              <span class="mx-2" style="color: #FFC300;"><i class="fa-solid fa-medal fa-2xl" title="Первое место"></i> x <%= positions_count[1] %></span>
+            <% end %>
+            <% if positions_count.key?(2) %>
+              <span class="mx-2" style="color: #C0C0C0;"><i class="fa-solid fa-medal fa-2xl" title="Второе место"></i> x <%= positions_count[2] %></span>
+            <% end %>
+            <% if positions_count.key?(3) %>
+              <span class="mx-2" style="color: #CD7F32;"><i class="fa-solid fa-medal fa-2xl" title="Третье место"></i> x <%= positions_count[3] %></span>
+            <% end %>
+          </p>
+          <p class="card-text text-center">
+            <% %w[probeg fiveverst s95 parkrun].each do |contact_type| %>
+              <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
 
-    <h2>Выступления за клуб</h2>
+              <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
+                <%=
+                  image_tag(
+                    "/contacts/#{contact_type}.png",
+                    class: 'rounded-circle border border-opacity-25 mx-1',
+                    style: 'width: 50px;',
+                    alt: contact_type,
+                    title: contact_type.titleize,
+                  )
+                %>
+              <% end %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="mt-4">Выступления за клуб</h2>
     <table class="table table-striped">
       <thead>
         <tr>

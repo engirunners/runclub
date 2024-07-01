@@ -10,8 +10,9 @@
 
       <p>Формат эстафеты <%= command.form %></p>
       <p>Категория <%= human_command_category command %></p>
+      <p>Итоговое время <%= human_result_time command.total_time %></p>
       <p>Место в категории <%= command.position %>/<%= command.places_category %></p>
-      <p>Место в абсолюте <%= command.position_abs %>/<%= command.places_category %></p>
+      <p>Место в абсолюте <%= command.position_abs %>/<%= command.places_overall %></p>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -19,6 +20,7 @@
               <th scope="col">Имя</th>
               <th scope="col">Дистанция</th>
               <th scope="col">Время</th>
+              <th scope="col" class="hidden-on-phone">Темп</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
@@ -28,6 +30,7 @@
                 <td><%= link_to result.athlete.name, athlete_path(result.athlete.nickname) %></td>
                 <td><%= human_distance result.distance %></td>
                 <td><%= human_result_time result.total_time %></td>
+                <td class="hidden-on-phone"><%= human_result_pace result.total_time, result.distance %></td>
               </tr>
             <% end %>
           </tbody>
