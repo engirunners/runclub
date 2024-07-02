@@ -96,3 +96,7 @@ ru:
   date:
     formats:
       brief: '%-d %B'
+  probeg: Пробег
+  fiveverst: 5 вёрст
+  s95: S95
+  parkrun: Паркран
