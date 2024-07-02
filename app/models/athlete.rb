@@ -6,6 +6,7 @@ class Athlete < ApplicationRecord
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_fill: [90, 130]
     attachable.variant :web, resize_to_fill: [360, 520], preprocessed: true
+    attachable.variant :high, resize_to_fill: [720, 1040], preprocessed: true
   end
 
   validates :first_name, :last_name, presence: true

@@ -34,6 +34,10 @@ body {
   font-size: 1.5rem;
 }
 
+.athlete-img {
+  max-width: 360px !important;
+}
+
 @include media(phoneScreen) {
   .hidden-on-phone {
     display: none;

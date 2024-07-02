@@ -9,10 +9,10 @@
         <div class="col">
           <div class="card bg-body-tertiary mb-3 border-primary border-opacity-25 h-100 shadow">
             <div class="row g-0">
-              <div class="col-sm-4 p-3 d-flex justify-content-center align-items-start">
+              <div class="col-sm-3 p-3 d-flex justify-content-center align-items-start">
                 <%= image_tag athlete.image.variant(:web), class: 'img-fluid rounded', alt: athlete.name, loading: 'lazy' if athlete.image.attached? %>
               </div>
-              <div class="col-sm-8">
+              <div class="col-sm-9">
                 <div class="card-body">
                   <h5 class="card-title text-uppercase">
                     <%= link_to athlete.name, athlete_path(athlete.nickname), class: 'stretched-link text-decoration-none text-body' %>
