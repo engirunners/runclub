@@ -2,9 +2,13 @@
 <%= render 'common/header' %>
 <!-- Content -->
 <div class="text-center">
-  <h1 class="mb-3 text-center text-danger"><%= @athlete.name %></h1>
+  <h1 class="mb-3 text-center text-body-tertiary"><%= @athlete.name %></h1>
 
   <p><span class="fw-bold">Дата дебюта:</span> <%= l @athlete.debut_date, format: :long %> года</p>
-  <p><span class="fw-bold">Дата ухода:</span> <%= l @athlete.exit_date, format: :long %> года</p>
+  <p>
+    <span class="fw-bold">Последний старт:</span>
+    <%= l @athlete.results.joins(command: :event).order(date: :desc).pick(:date), format: :long %> года
+  </p>
+  <p>В настоящий момент в Engirunners не состоит.</p>
 </div>
 <% render 'common/spacer' %>
