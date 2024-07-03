@@ -25,6 +25,13 @@ body {
   min-height: 100vh;
 }
 
+header.main-header {
+  @extend .py-5;
+  background-image: url('/images/plate.png');
+  background-position: center;
+  background-size: cover;
+}
+
 .feature {
   display: inline-flex;
   align-items: center;
@@ -42,4 +49,9 @@ body {
   .hidden-on-phone {
     display: none;
   }
+}
+
+.social-link {
+  @extend .rounded-circle.border.border-opacity-25.mx-1;
+  width: 50px;
 }
