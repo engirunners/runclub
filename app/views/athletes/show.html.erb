@@ -23,14 +23,7 @@
               <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
 
               <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
-                <%=
-                  image_tag(
-                    "/contacts/#{contact_type}.png",
-                    class: 'social-link',
-                    alt: t(contact_type),
-                    title: t(contact_type),
-                  )
-                %>
+                <%= image_tag("/images/contacts/#{contact_type}.png", class: 'social-link', alt: t(contact_type), title: t(contact_type)) %>
               <% end %>
             <% end %>
           </div>

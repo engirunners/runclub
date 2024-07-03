@@ -52,10 +52,10 @@ ru:
         genders:
           male: М
           female: Ж
-        parkrun_link: паркран
+        parkrun_link: Parkrun
         fiveverst_link: 5 вёрст
         s95_link: S95
-        probeg_link: probeg
+        probeg_link: Пробег
         name: Имя ФАМИЛИЯ
       event:
         date: дата
@@ -99,4 +99,4 @@ ru:
   probeg: Пробег
   fiveverst: 5 вёрст
   s95: S95
-  parkrun: Паркран
+  parkrun: Parkrun
