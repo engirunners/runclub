@@ -45,6 +45,11 @@ header.main-header {
   max-width: 360px !important;
 }
 
+.partner-img {
+  @extend .shadow, .rounded, .img-fluid;
+  max-height: 160px;
+}
+
 @include media(phoneScreen) {
   .hidden-on-phone {
     display: none;
@@ -52,6 +57,6 @@ header.main-header {
 }
 
 .social-link {
-  @extend .rounded-circle.border.border-opacity-25.mx-1;
+  @extend .rounded-circle, .border, .border-opacity-25, .mx-1;
   width: 50px;
 }

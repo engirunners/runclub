@@ -8,7 +8,7 @@ ActiveAdmin.register Partner do
   permit_params :name, :link, :logo
 
   index do
-    column(:logo) { |p| image_tag p.logo.variant(:thumb) if p.logo.attached? }
+    column(:logo) { |p| image_tag p.logo.variant(:thumb), style: 'max-height: 120px;' if p.logo.attached? }
     column :name
     column :link, sortable: false
     actions dropdown: true
