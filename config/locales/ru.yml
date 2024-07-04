@@ -52,6 +52,7 @@ ru:
         genders:
           male: М
           female: Ж
+        strava_link: Strava
         parkrun_link: Parkrun
         fiveverst_link: 5 вёрст
         s95_link: S95
@@ -100,3 +101,4 @@ ru:
   fiveverst: 5 вёрст
   s95: S95
   parkrun: Parkrun
+  strava: Strava

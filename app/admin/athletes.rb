@@ -5,7 +5,7 @@ ActiveAdmin.register Athlete do
 
   permit_params(
     :nickname, :image, :first_name, :last_name, :birth_date, :debut_date, :exit_date,
-    :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link,
+    :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link, :strava_link,
   )
 
   config.paginate = false
@@ -22,6 +22,7 @@ ActiveAdmin.register Athlete do
     column(:fiveverst_link, sortable: false) { |a| a.fiveverst_link.present? }
     column(:s95_link, sortable: false) { |a| a.s95_link.present? }
     column(:probeg_link, sortable: false) { |a| a.probeg_link.present? }
+    column(:strava_link, sortable: false) { |a| a.strava_link.present? }
     column(:parkrun_link, sortable: false) { |a| a.parkrun_link.present? }
     column :exit_date
 
@@ -39,6 +40,7 @@ ActiveAdmin.register Athlete do
       row :fiveverst_link
       row :s95_link
       row :probeg_link
+      row :strava_link
       row :parkrun_link
       row :exit_date
       row(:image) { |a| image_tag a.image.variant(:web) if a.image.attached? }
@@ -55,11 +57,12 @@ ActiveAdmin.register Athlete do
       f.input :gender, include_blank: false
       f.input :debut_date, start_year: 2015, end_year: Date.current.year
     end
-    f.inputs 'Ссылки на профиль спортсмена' do
-      f.input :parkrun_link
+    f.inputs 'Ссылки на профили спортсмена' do
       f.input :fiveverst_link
       f.input :s95_link
       f.input :probeg_link
+      f.input :strava_link
+      f.input :parkrun_link
     end
     f.inputs 'Заполняется в случае выхода спортсмена из клуба' do
       f.input :exit_date, start_year: 2015, end_year: Date.current.year
