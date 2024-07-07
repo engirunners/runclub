@@ -14,9 +14,9 @@
       <div class="<%= 'offset-lg-3 offset-xl-2 ' unless athlete_with_photo %>col-lg-6 col-xl-8">
         <div class="vstack align-items-center h-100">
           <h1 class="my-3 text-danger"><%= @athlete.name %></h1>
-          <div class="">Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %></div>
+          <div class="mb-3">Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %></div>
           <% if @positions_count.present? %>
-            <div class="mt-3 mb-4"><%= render 'medals' %></div>
+            <div class="mb-4"><%= render 'medals' %></div>
           <% end %>
           <div class="mt-1 mt-lg-auto">
             <span class="hidden-on-phone">Профили:</span>
@@ -33,28 +33,32 @@
     </div>
 
     <h2 class="mt-4">Выступления за клуб</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Дата</th>
-          <th scope="col">Эстафета</th>
-          <th scope="col" class="hidden-on-phone">Формат</th>
-          <th scope="col" class="text-center">Место</th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <% total_count = @command_results.size %>
-        <% @command_results.each_with_index do |command_result, idx| %>
+    <% total_count = @command_results.size %>
+    <% if total_count.positive? %>
+      <table class="table table-striped mb-3">
+        <thead>
           <tr>
-            <th scope="row"><%= total_count - idx %></th>
-            <td><%= l command_result.event.date %></td>
-            <td><%= link_to command_result.event.name, command_result.event %></td>
-            <td class="hidden-on-phone"><%= command_result.form %></td>
-            <td class="text-center"><%= command_result.position %></td>
+            <th scope="col">#</th>
+            <th scope="col">Дата</th>
+            <th scope="col">Эстафета</th>
+            <th scope="col" class="hidden-on-phone">Формат</th>
+            <th scope="col" class="text-center">Место</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody class="table-group-divider">
+          <% @command_results.each_with_index do |command_result, idx| %>
+            <tr>
+              <th scope="row"><%= total_count - idx %></th>
+              <td><%= l command_result.event.date %></td>
+              <td><%= link_to command_result.event.name, command_result.event %></td>
+              <td class="hidden-on-phone"><%= command_result.form %></td>
+              <td class="text-center"><%= command_result.position %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>Пока не было выступлений в эстафетах за клуб.</p>
+    <% end %>
   </div>
 </div>
