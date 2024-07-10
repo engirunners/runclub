@@ -10,13 +10,14 @@
         <tr>
           <th scope="col">Дата</th>
           <th scope="col">Название</th>
+          <th scope="col" class="hidden-on-phone">Места</th>
           <th scope="col" class="text-center">Наших команд</th>
         </tr>
       </thead>
       <tbody class="table-group-divider">
         <% @events_grouped_by_year.each do |year, events| %>
           <tr class="table-light table-active">
-            <th colspan="3" class="text-danger text-center fw-bold h3"><%= year %> год</th>
+            <th colspan="4" class="text-danger text-center fw-bold h3"><%= year %> год</th>
           </tr>
           <% events.each do |event| %>
             <tr>
@@ -25,6 +26,7 @@
                 <span class="d-block d-sm-none"><%= l event.date, format: :short %></span>
               </th>
               <td><%= link_to event.name, event %></td>
+              <td class="hidden-on-phone"><%= event.commands.map(&:position).sort.join(', ') %></td>
               <td class="text-center"><%= event.commands.size %></td>
             </tr>
           <% end %>
