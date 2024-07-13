@@ -51,6 +51,9 @@ header.main-header {
 }
 
 @include media(phoneScreen) {
+  .athlete-img {
+    max-width: 100% !important;
+  }
   .hidden-on-phone {
     display: none;
   }
