@@ -7,7 +7,9 @@
     <h1 class="mb-3 text-center text-danger">Достижения</h1>
     <% @achievements.each do |achievement| %>
       <h2 class="mb-2"><%= achievement.title %></h2>
-      <%= sanitized_text achievement.description %>
+      <div class="achievement">
+        <%= sanitized_text achievement.description %>
+      </div>
     <% end %>
   </div>
 </div>

@@ -63,3 +63,10 @@ header.main-header {
   @extend .rounded-circle, .border, .border-opacity-25, .mx-1;
   width: 50px;
 }
+
+.achievement {
+  p {
+    @extend .my-0;
+    min-height: calc(var(--bs-body-font-size) * var(--bs-body-line-height));
+  }
+}
