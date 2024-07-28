@@ -21,9 +21,13 @@ module ApplicationHelper
   end
 
   def human_result_time(time)
-    return 'xx:xx' unless time
+    return 'xx:xx' unless (total_time = time.total_time)
 
-    time.strftime(time.hour.zero? ? '%M:%S' : '%H:%M:%S')
+    time_format = '%M:%S'
+    time_format = "%H:#{time_format}" if total_time.hour.positive?
+    time_format = "#{time_format},#{format '%02d', time.fractional_second}" if time.fractional_second.present?
+
+    total_time.strftime(time_format)
   end
 
   def human_result_pace(time, distance = 5)

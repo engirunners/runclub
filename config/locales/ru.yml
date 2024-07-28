@@ -66,6 +66,7 @@ ru:
       command:
         name: название
         total_time: результат
+        fractional_second: доли секунды
         category: категория
         categories:
           mf: МЖ
@@ -85,6 +86,7 @@ ru:
         distance: дистанция (км)
         stage: этап
         total_time: время
+        fractional_second: доли секунды
         athlete: спортсмен
       user:
         created_at: создан

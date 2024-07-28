@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_04_091058) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_28_172236) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,6 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_04_091058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "results_count"
+    t.integer "fractional_second"
     t.index ["event_id"], name: "index_commands_on_event_id"
   end
 
@@ -121,6 +122,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_04_091058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "command_id", null: false
+    t.integer "fractional_second"
     t.index ["athlete_id"], name: "index_results_on_athlete_id"
     t.index ["command_id", "stage"], name: "index_results_on_command_id_and_stage", unique: true
   end
