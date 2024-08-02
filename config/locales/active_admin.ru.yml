@@ -17,6 +17,9 @@ ru:
         new_model: 'Добавить партнёра'
         edit_model: 'Изменить партнёра'
         delete_model: 'Удалить партнёра'
+  admin:
+    athletes:
+      destroy_image: 'Фото удалено'
   views:
     pagination:
       previous: '←'

@@ -69,4 +69,20 @@ ActiveAdmin.register Athlete do
     end
     f.actions
   end
+
+  action_item :destroy_image, only: %i[show edit] do
+    if resource.image.attached?
+      link_to(
+        'Удалить фото',
+        destroy_image_admin_athlete_path(resource),
+        data: { confirm: 'Удалить фото спортсмена?' },
+        method: :delete,
+      )
+    end
+  end
+
+  member_action :destroy_image, method: :delete do
+    resource.image.purge
+    redirect_to admin_athlete_path(resource), notice: t('.destroy_image')
+  end
 end
