@@ -29,9 +29,16 @@ body {
   font-size: 82%;
 }
 
-tr.ex {
-  td.col-first_name, td.col-last_name {
-    color: white !important;
-    background-color: grey !important;
+tr {
+  &.ex {
+    td.col-first_name, td.col-last_name {
+      color: white !important;
+      background-color: grey !important;
+    }
+  }
+  &.hidden-birth-date {
+    td.col-birth_date {
+      color: grey !important;
+    }
   }
 }

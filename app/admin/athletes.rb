@@ -4,14 +4,14 @@ ActiveAdmin.register Athlete do
   includes image_attachment: :blob
 
   permit_params(
-    :nickname, :image, :first_name, :last_name, :birth_date, :debut_date, :exit_date,
+    :nickname, :image, :first_name, :last_name, :birth_date, :hide_birth_date, :debut_date, :exit_date,
     :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link, :strava_link,
   )
 
   config.paginate = false
   config.sort_order = 'last_name_asc'
 
-  index row_class: ->(a) { 'ex' if a.exit_date.present? } do
+  index row_class: ->(a) { [('ex' if a.exit_date.present?), ('hidden-birth-date' if a.hide_birth_date)].compact } do
     column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
     column :nickname
     column :first_name
@@ -53,6 +53,7 @@ ActiveAdmin.register Athlete do
       f.input :nickname, required: true
       f.input :first_name
       f.input :last_name
+      f.input :hide_birth_date
       f.input :birth_date, start_year: 80.years.ago.year, end_year: 14.years.ago.year
       f.input :gender, include_blank: false
       f.input :debut_date, start_year: 2015, end_year: Date.current.year

@@ -14,7 +14,9 @@
       <div class="<%= 'offset-lg-3 offset-xl-2 ' unless athlete_with_photo %>col-lg-6 col-xl-8">
         <div class="vstack align-items-center h-100">
           <h1 class="my-3 text-danger"><%= @athlete.name %></h1>
-          <div class="mb-3">Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %></div>
+          <% unless @athlete.hide_birth_date %>
+            <div class="mb-3">Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %></div>
+          <% end %>
           <% if @positions_count.present? %>
             <div class="mb-4"><%= render 'medals' %></div>
           <% end %>

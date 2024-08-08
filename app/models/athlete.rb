@@ -11,6 +11,7 @@ class Athlete < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
   validates :nickname, uniqueness: true, format: { with: /\A[a-z_-]{3,}\z/ }, presence: true
+  validates :birth_date, presence: true, unless: :hide_birth_date
 
   scope :active, -> { where(exit_date: nil) }
 
