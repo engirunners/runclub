@@ -39,6 +39,13 @@ body {
 }
 
 header.main-header {
+  background-image: url('/images/main_header.png');
+  background-position: center;
+  background-size: cover;
+  height: 45vh;
+}
+
+header.header {
   @extend .py-5;
   background-image: url('/images/plate.png');
   background-position: center;
