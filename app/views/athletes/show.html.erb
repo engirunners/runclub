@@ -11,7 +11,7 @@
           <%= image_tag @athlete.image.variant(:high), class: 'athlete-img', alt: @athlete.name, title: @athlete.name %>
         </div>
       <% end %>
-      <div class="<%= 'offset-lg-3 offset-xl-2 ' unless athlete_with_photo %>col-lg-6 col-xl-8">
+      <%= tag.div class: ['col-lg-6 col-xl-8', 'offset-lg-3 offset-xl-2' => !athlete_with_photo] do %>
         <div class="vstack align-items-center h-100">
           <h1 class="my-3 text-danger"><%= @athlete.name %></h1>
           <% unless @athlete.hide_birth_date %>
@@ -31,7 +31,7 @@
             <% end %>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
 
     <h2 class="mt-4">Выступления за клуб</h2>
