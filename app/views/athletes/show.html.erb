@@ -22,7 +22,7 @@
           <% end %>
           <div class="mt-1 mt-lg-auto">
             <span class="hidden-on-phone">Профили:</span>
-            <% %w[fiveverst s95 parkrun probeg strava].each do |contact_type| %>
+            <% %w[fiveverst s95 parkrun probeg strava telegram instagram].each do |contact_type| %>
               <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
 
               <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>

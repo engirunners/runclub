@@ -58,6 +58,8 @@ ru:
         fiveverst_link: 5 вёрст
         s95_link: S95
         probeg_link: Пробег
+        instagram_link: Инстаграм
+        telegram_link: Телеграм
         name: Имя ФАМИЛИЯ
       event:
         date: дата
@@ -105,3 +107,5 @@ ru:
   s95: S95
   parkrun: Parkrun
   strava: Strava
+  instagram: Инстаграм
+  telegram: Телеграм

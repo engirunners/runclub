@@ -5,7 +5,7 @@ ActiveAdmin.register Athlete do
 
   permit_params(
     :nickname, :image, :first_name, :last_name, :birth_date, :hide_birth_date, :debut_date, :exit_date,
-    :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link, :strava_link,
+    :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link, :strava_link, :telegram_link, :instagram_link,
   )
 
   config.paginate = false
@@ -24,6 +24,8 @@ ActiveAdmin.register Athlete do
     column(:probeg_link, sortable: false) { |a| a.probeg_link.present? }
     column(:strava_link, sortable: false) { |a| a.strava_link.present? }
     column(:parkrun_link, sortable: false) { |a| a.parkrun_link.present? }
+    column(:telegram_link, sortable: false) { |a| a.telegram_link.present? }
+    column(:instagram_link, sortable: false) { |a| a.instagram_link.present? }
     column :exit_date
 
     actions dropdown: true
@@ -42,6 +44,8 @@ ActiveAdmin.register Athlete do
       row :probeg_link
       row :strava_link
       row :parkrun_link
+      row :telegram_link
+      row :instagram_link
       row :exit_date
       row(:image) { |a| image_tag a.image.variant(:web) if a.image.attached? }
     end
@@ -64,6 +68,8 @@ ActiveAdmin.register Athlete do
       f.input :probeg_link
       f.input :strava_link
       f.input :parkrun_link
+      f.input :telegram_link
+      f.input :instagram_link
     end
     f.inputs 'Заполняется в случае выхода спортсмена из клуба' do
       f.input :exit_date, start_year: 2015, end_year: Date.current.year

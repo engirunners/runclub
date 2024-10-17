@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_08_133401) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_17_162454) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -79,6 +79,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_08_133401) do
     t.string "nickname", null: false
     t.string "strava_link"
     t.boolean "hide_birth_date", default: false, null: false
+    t.string "instagram_link"
+    t.string "telegram_link"
     t.index ["nickname"], name: "index_athletes_on_nickname", unique: true
   end
 
