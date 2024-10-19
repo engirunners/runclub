@@ -14,8 +14,7 @@ ActiveAdmin.register Athlete do
   index row_class: ->(a) { [('ex' if a.exit_date.present?), ('hidden-birth-date' if a.hide_birth_date)].compact } do
     column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
     column :nickname
-    column :first_name
-    column :last_name
+    column :name
     column(:gender) { |a| human_athlete_gender a }
     column :birth_date
     column :debut_date
