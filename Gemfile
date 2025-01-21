@@ -40,7 +40,7 @@ group :development do
   # deployment
   gem 'bcrypt_pbkdf', '~> 1.1'
   gem 'capistrano', '~> 3.17', require: false
-  gem 'capistrano3-nginx', '~> 2.0', require: false
+  gem 'capistrano3-nginx', '~> 3.0', require: false
   gem 'capistrano3-puma', '6.0.0.beta.1', require: false
   gem 'capistrano-bundler', '~> 2.1', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
