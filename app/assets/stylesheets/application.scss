@@ -1,8 +1,8 @@
 $primary: #2a2951;
-$secondary: #fcea10;
+$secondary: #fff8ef;
 $success: #169873;
-$danger: #c91417;
-$warning: #8f3985;
+$danger: #FF3300;
+$warning: #fcea10;
 $info: #9ebd6e;
 $light: #f0f0f0;
 $dark: #0f0f0f;
@@ -34,58 +34,125 @@ $font-family-sans-serif: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Robo
   }
 }
 
-body {
-  min-height: 100vh;
+.section {
+  @extend .container-lg, .mx-auto, .px-3, .px-md-4, .px-xl-0;
+  @media (min-width: 1080px) {
+    max-width: 1080px;
+  }
 }
 
 header.main-header {
   background-image: url('/images/main_header.png');
   background-position: center;
   background-size: cover;
-  height: 45vh;
+  height: 310px;
+  @include media(phoneScreen) {
+    height: 210px;
+  }
 }
 
-header.header {
-  @extend .py-5;
-  background-image: url('/images/plate.png');
-  background-position: center;
-  background-size: cover;
+.navbar-toggler {
+  @extend .border-0;
 }
 
-.feature {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 3rem;
-  width: 3rem;
-  font-size: 1.5rem;
+.img-logo {
+  max-height: 28px;
+  @include media(phoneScreen) {
+    max-height: 19px;
+  }
+}
+
+.img-logo-footer {
+  max-height: 18px;
+  @include media(phoneScreen) {
+    max-height: 12px;
+  }
+}
+
+.footer-text {
+  color: white;
+  font-size: 0.7rem;
+}
+
+.footer-link {
+  @extend .text-decoration-none;
+  color: white;
+}
+
+.footer-link:hover {
+  color: $danger;
+}
+
+a.nav-link.active {
+  @extend .bg-light, .rounded, .p-1, .m-1;
+}
+
+.img-feed {
+  @extend .object-fit-cover, .w-100;
+  aspect-ratio: 1 / 1;
+
+  @include media(phoneScreen) {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+  }
 }
 
 .athlete-img {
-  max-width: 360px !important;
+  @extend .rounded-circle, .my-4;
+  max-width: 400px !important;
+  @include media(phoneScreen) {
+    max-width: 200px !important;
+  }
+}
+
+.athlete-thumb-img {
+  max-width: 125px !important;
+  @include media(phoneScreen) {
+    max-width: 85px !important;
+  }
 }
 
 .partner-img {
-  @extend .shadow, .rounded, .img-fluid;
-  max-height: 160px;
+  max-height: 120px;
+  max-width: 30vw;
+  @include media(phoneScreen) {
+    max-height: 90px;
+  }
 }
 
 @include media(phoneScreen) {
   .hidden-on-phone {
     display: none;
   }
+
+  table {
+    font-size: $small-font-size;
+  }
+
+  a.nav-link.active {
+    margin-left: 0 !important;
+  }
 }
 
 .social-link {
-  @extend .rounded-circle, .border, .border-opacity-25, .mx-1;
-  width: 50px;
+  @extend .rounded-circle, .border, .border-opacity-25, .m-1;
+  width: 60px;
+  @include media(phoneScreen) {
+    width: 50px;
+  }
 }
 
-.achievement {
-  p {
-    @extend .my-0;
-    min-height: calc(var(--bs-body-font-size) * var(--bs-body-line-height));
-  }
+.medal-icon {
+  @extend .fa-solid, .fa-medal, .fa-2xl;
+  font-size: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  @include media(phoneScreen) {
+    font-size: 40px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+      }
 }
 
 .digits {

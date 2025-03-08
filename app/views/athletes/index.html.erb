@@ -1,39 +1,32 @@
-<%= head_info :title, 'Участники клуба' %>
+<%= head_info :title, 'Команда' %>
 <% head_info :description, 'Список участников клуба Engirunners' %>
-<header class="header"></header>
-<!-- Content -->
-<div class="row mt-3 mx-1 mx-md-0">
-  <div class="offset-md-1 col-md-10 pb-5">
-    <h1 class="mb-3 text-center text-danger">Участники клуба</h1>
-    <div class="row row-cols-1 row-cols-lg-2 g-4">
+<section class="my-5">
+  <div class="section">
+    <h1>Команда</h1>
+    <%= image_tag '/images/command.webp', class: 'img-fluid mt-4 mb-5', alt: 'Engirunners', title: 'Наша команда' %>
+    <div class="row row-cols-1 row-cols-md-2 g-5">
       <% @athletes.each do |athlete| %>
-        <div class="col">
-          <div class="card bg-body-tertiary mb-3 border-primary border-opacity-25 h-100 shadow">
-            <div class="row g-0">
-              <div class="col-sm-3 p-3 d-flex justify-content-center align-items-start">
-                <%= image_tag athlete.image.variant(:web), class: 'img-fluid rounded', alt: athlete.name, loading: 'lazy' if athlete.image.attached? %>
-              </div>
-              <div class="col-sm-9">
-                <div class="card-body">
-                  <h5 class="card-title text-uppercase">
-                    <%= link_to athlete.name, athlete_path(athlete.nickname), class: 'stretched-link text-decoration-none text-body' %>
-                  </h5>
-                  <p class="card-text">
-                    <% if @results_count.key? athlete.id %>
-                      Количество выступлений за клуб <%= @results_count[athlete.id] %>.
-                    <% else %>
-                      Пока не было выступлений за клуб.
-                    <% end %>
-                  </p>
-                  <% if athlete.debut_date %>
-                    <p class="card-text"><small class="text-muted">Дата дебюта: <%= l athlete.debut_date %></small></p>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+        <div class="col position-relative d-flex">
+          <div class="flex-shrink-0">
+            <%= image_tag athlete.image.variant(:thumb), class: 'athlete-thumb-img rounded-circle', alt: athlete.last_name, loading: 'lazy' if athlete.image.attached? %>
+          </div>
+          <div class="flex-grow-1 ms-3">
+            <p class="fs-4 fw-medium mb-2">
+              <%= link_to athlete.name, athlete_path(athlete.nickname), class: 'stretched-link text-decoration-none text-body' %>
+            </p>
+            <p class="mb-2">
+              <% if @results_count.key? athlete.id %>
+                выступлений за клуб:&nbsp;<%= @results_count[athlete.id] %>
+              <% else %>
+                Пока не было выступлений за клуб
+              <% end %>
+            </p>
+            <% if athlete.debut_date %>
+              <p class="text-muted">дата дебюта: <%= l athlete.debut_date %></p>
+            <% end %>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-</div>
+</section>

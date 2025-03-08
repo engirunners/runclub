@@ -1,15 +1,12 @@
 <%= head_info :title, @athlete.name %>
 <% head_info :description, "#{@athlete.name} в настоящий момент в Engirunners не состоит" %>
-<header class="header"></header>
-<!-- Content -->
-<div class="text-center">
-  <h1 class="mb-3 text-center text-body-tertiary"><%= @athlete.name %></h1>
+<div class="text-center my-5" style="min-height: 25vh">
+  <h1 class="fs-3 fw-bold mb-3 text-body-tertiary"><%= @athlete.name %></h1>
 
   <p><span class="fw-bold">Дата дебюта:</span> <%= l @athlete.debut_date, format: :long %> года</p>
   <p>
     <span class="fw-bold">Последний старт:</span>
     <%= l @athlete.results.joins(command: :event).order(date: :desc).pick(:date), format: :long %> года
   </p>
-  <p>В настоящий момент в Engirunners не состоит.</p>
+  <p>В настоящий момент в Engirunners не состоит</p>
 </div>
-<% render 'common/spacer' %>

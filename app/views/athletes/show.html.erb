@@ -1,43 +1,39 @@
 <%= head_info :title, @athlete.name %>
 <% head_info :description, "#{@athlete.name} - достижения и список результатов в команде Engirunners" %>
-<header class="header"></header>
-<!-- Content -->
 <div class="row mx-0">
   <div class="col-md-10 offset-md-1">
-    <div class="row mx-0 mt-3">
+    <div class="text-center">
+      <h1 class="fs-3 fw-bold my-3"><%= @athlete.name %></h1>
+      <% unless @athlete.hide_birth_date %>
+        <div class="mb-3 text-body-tertiary">
+          Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %>
+        </div>
+      <% end %>
       <% athlete_with_photo = @athlete.image.attached? %>
       <% if athlete_with_photo %>
-        <div class="col-lg-6 col-xl-4 px-0 text-center">
-          <%= image_tag @athlete.image.variant(:high), class: 'athlete-img', alt: @athlete.name, title: @athlete.name %>
+        <%= image_tag @athlete.image.variant(:web), class: 'athlete-img', alt: @athlete.last_name, title: @athlete.name %>
+      <% end %>
+      <% if @positions_count.present? %>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+          <%= render 'medals' %>
         </div>
       <% end %>
-      <%= tag.div class: ['col-lg-6 col-xl-8', 'offset-lg-3 offset-xl-2' => !athlete_with_photo] do %>
-        <div class="vstack align-items-center h-100">
-          <h1 class="my-3 text-danger"><%= @athlete.name %></h1>
-          <% unless @athlete.hide_birth_date %>
-            <div class="mb-3">Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %></div>
-          <% end %>
-          <% if @positions_count.present? %>
-            <div class="mb-4"><%= render 'medals' %></div>
-          <% end %>
-          <div class="mt-1 mt-lg-auto">
-            <span class="hidden-on-phone">Профили:</span>
-            <% %w[fiveverst s95 parkrun probeg strava telegram instagram].each do |contact_type| %>
-              <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
+      <div class="d-flex flex-row flex-wrap justify-content-center align-items-center mt-4">
+        <% %w[fiveverst s95 parkrun probeg strava telegram instagram].each do |contact_type| %>
+          <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
 
-              <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
-                <%= image_tag("/images/contacts/#{contact_type}.png", class: 'social-link', alt: t(contact_type), title: t(contact_type)) %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+          <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
+            <%= image_tag("/images/contacts/#{contact_type}.png", class: 'social-link', alt: t(contact_type), title: t(contact_type)) %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
-    <h2 class="mt-4">Выступления за клуб</h2>
+    <h2 class="mt-5 fw-bold fs-3 text-center">Выступления за клуб</h2>
     <% total_count = @command_results.size %>
     <% if total_count.positive? %>
-      <table class="table table-striped mb-3">
+      <p class="text-body-tertiary text-center mt-3">Всего старов: <%= total_count %></p>
+      <table class="table table-striped mb-5">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -60,7 +56,7 @@
         </tbody>
       </table>
     <% else %>
-      <p>Пока не было выступлений в эстафетах за клуб.</p>
+      <p class="mb-5">Пока не было выступлений в эстафетах за клуб.</p>
     <% end %>
   </div>
 </div>
