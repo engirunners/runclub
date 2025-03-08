@@ -1,16 +1,16 @@
 <%= head_info :title, 'Список эстафет' %>
 <% head_info :description, 'Эстафеты, в которых принимал участие клуб Engirunners с момента своего основания' %>
-<header class="header"></header>
 <!-- Content -->
-<div class="row mx-0 mt-2">
-  <div class="offset-md-1 col-md-10">
-    <h1 class="mb-3 text-center text-danger">Эстафеты</h1>
+<section class="row my-5 mx-0">
+  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 px-3 px-lg-0">
+    <h1>Эстафеты</h1>
+    <%= image_tag '/images/events.webp', class: 'img-fluid my-3 my-md-4', alt: 'Эстафеты', title: 'Эстафеты' %>
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Дата</th>
+          <th scope="col no-pe">Дата</th>
           <th scope="col">Название</th>
-          <th scope="col" class="hidden-on-phone">Места</th>
+          <th scope="col" class="text-center">Места</th>
           <th scope="col" class="text-center">Наших команд</th>
         </tr>
       </thead>
@@ -26,7 +26,7 @@
                 <span class="d-block d-sm-none"><%= l event.date, format: :short %></span>
               </th>
               <td><%= link_to event.name, event %></td>
-              <td class="hidden-on-phone"><%= event.commands.map(&:position).sort.join(', ') %></td>
+              <td class="text-center"><%= event.commands.map(&:position).sort.join(', ') %></td>
               <td class="text-center"><%= event.commands.size %></td>
             </tr>
           <% end %>
@@ -34,4 +34,4 @@
       </tbody>
     </table>
   </div>
-</div>
+</section>

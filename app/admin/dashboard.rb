@@ -14,19 +14,6 @@ ActiveAdmin.register_page 'Dashboard' do
           end
         end
       end
-
-      column do
-        panel 'Инфа' do
-          para 'Привет.'
-        end
-      end
-    end
-
-    div class: 'blank_slate_container', id: 'dashboard_default_message' do
-      span class: 'blank_slate' do
-        span 'Страничка управления сайтом'
-        small 'Тут можно добавить какую-то инфу'
-      end
     end
   end
 end

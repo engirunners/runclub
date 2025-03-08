@@ -21,38 +21,53 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="m-0 d-flex flex-column">
+  <body>
     <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg py-md-3 py-lg-4">
       <div class="container">
-        <%= link_to 'Engirunners', root_path, class: 'navbar-brand text-uppercase fw-bold' %>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <%= link_to root_path, class: 'navbar-brand text-uppercase fw-bold' do %>
+          <%= image_tag '/logo_header.svg', class: 'img-logo', alt: 'logo', title: 'Engirunners' %>
+        <% end %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключение меню">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><%= link_to 'Главная', root_path, class: "nav-link #{'active' if current_page? 'index'}" %></li>
-            <li class="nav-item"><%= link_to 'Состав', athletes_path, class:"nav-link #{'active' if current_page? 'athletes'}" %></li>
+            <li class="nav-item"><%= link_to 'О нас', about_path, class:"nav-link #{'active' if current_page? 'about'}" %></li>
+            <li class="nav-item"><%= link_to 'Команда', athletes_path, class:"nav-link #{'active' if current_page? 'athletes'}" %></li>
             <li class="nav-item"><%= link_to 'Эстафеты', events_path, class:"nav-link #{'active' if current_page? 'events'}" %></li>
             <li class="nav-item"><%= link_to 'Достижения', achievements_path, class:"nav-link #{'active' if current_page? 'achievements'}" %></li>
-            <li class="nav-item"><%= link_to 'О нас', about_path, class:"nav-link #{'active' if current_page? 'about'}" %></li>
+            <li class="nav-item"><a href="/#contacts" class="nav-link">Контакты</a></li>
           </ul>
         </div>
       </div>
     </nav>
+    <!-- Header -->
+    <header class="main-header"></header>
     <!-- Content section-->
     <%= yield %>
     <!-- Footer-->
-    <footer class="bg-dark py-4 mt-auto">
-      <div class="container px-5">
-        <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-          <div class="col-auto"><div class="small m-0 text-white">&copy; Engirunners <%= Date.current.year %></div></div>
-          <div class="col-auto">
-            <%= link_to 'О нас', about_path, class: 'link-light small' %>
-            <span class="text-white mx-1">&middot;</span>
-            <%= link_to 'Контакты', root_path(anchor: 'contacts'), class: 'link-light small' %>
-          </div>
-        </div>
+    <footer id="contacts" class="bg-dark py-5 mt-auto d-flex flex-column align-items-center justify-content-center footer-text">
+      <%= image_tag '/logo_footer.svg', class: 'img-logo-footer my-3', alt: 'logo', title: 'Engirunners' %>
+      <p class="mb-1">
+        Напишите нам:
+        <a href="mailto:engirunners@yandex.ru" class="footer-link" target="_blank" rel="noopener">engirunners@yandex.ru</a>
+      </p>
+      <p class="mb-1">
+        Следите за нами в соцсетях:
+        <a href="https://t.me/engirunners" class="footer-link" target="_blank" rel="noopener">@engirunners</a>
+      </p>
+      <div class="fs-1">
+        <a href="https://t.me/engirunners" class="footer-link me-3" target="_blank" rel="noopener">
+          <i class="fa-brands fa-telegram" role="img" aria-label="Telegram"></i>
+        </a>
+        <a href="https://vk.com/engirunners" class="footer-link me-3" target="_blank" rel="noopener">
+          <i class="fa-brands fa-vk" role="img" aria-label="VK"></i>
+        </a>
+        <a href="https://www.instagram.com/engirunners/" class="footer-link" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram" role="img" aria-label="Instagram"></i>
+        </a>
       </div>
     </footer>
   </body>
