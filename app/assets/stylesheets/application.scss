@@ -14,6 +14,7 @@ $navbar-dark-active-color: $secondary;
   src: font-url('OpenSans.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -30,7 +31,7 @@ $font-family-sans-serif: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Robo
 
 @mixin media($query) {
   @if $query == phoneScreen {
-    @media (max-width: 768px) { @content; }
+    @media (max-width: 576px) { @content; }
   }
 }
 
@@ -89,7 +90,6 @@ a.nav-link.active {
 
 .img-feed {
   @extend .object-fit-cover, .w-100;
-  aspect-ratio: 1 / 1;
 
   @include media(phoneScreen) {
     width: 100%;
