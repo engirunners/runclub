@@ -52,7 +52,7 @@ ActiveAdmin.register Athlete do
 
   form do |f|
     f.inputs 'Личные данные' do
-      f.input :image, as: :file
+      f.input :image, as: :file, hint: 'Размер фото должен быть не менее 800x800px'
       f.input :nickname, required: true
       f.input :first_name
       f.input :last_name

@@ -66,6 +66,7 @@ ru:
         name: название
         location: локация
         commands_count: команды
+        image: фото
       command:
         name: название
         total_time: результат
