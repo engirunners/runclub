@@ -8,7 +8,7 @@
       <% @athletes.each do |athlete| %>
         <div class="col position-relative d-flex">
           <div class="flex-shrink-0">
-            <%= image_tag athlete.image.variant(:thumb), class: 'athlete-thumb-img rounded-circle', alt: athlete.last_name, loading: 'lazy' if athlete.image.attached? %>
+            <%= image_tag athlete_image_path(athlete, variant: :thumb), class: 'athlete-thumb-img rounded-circle', title: athlete.name, alt: athlete.last_name, loading: 'lazy' %>
           </div>
           <div class="flex-grow-1 ms-3">
             <p class="fs-4 fw-medium mb-2">

@@ -63,4 +63,12 @@ module ApplicationHelper
   def external_link_to(title = nil, options = nil, html_options = {}, &)
     link_to title, *[options, html_options.merge(target: '_blank', rel: 'noopener')].compact, &
   end
+
+  def athlete_image_path(athlete, variant: :web)
+    if athlete.image.attached?
+      rails_representation_url(athlete.image.variant(variant))
+    else
+      "/images/unknown_#{athlete.gender}.png"
+    end
+  end
 end

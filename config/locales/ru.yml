@@ -70,11 +70,11 @@ ru:
         name: название
         total_time: результат
         fractional_second: доли секунды
-        category: категория
+        category: зачёт
         categories:
-          mf: МЖ
-          mm: ММ
-          ff: ЖЖ
+          mf: смешанный
+          mm: мужской
+          ff: женский
         stages: этапов
         form: формат
         position: место в кат.

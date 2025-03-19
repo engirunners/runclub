@@ -9,10 +9,7 @@
           Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %>
         </div>
       <% end %>
-      <% athlete_with_photo = @athlete.image.attached? %>
-      <% if athlete_with_photo %>
-        <%= image_tag @athlete.image.variant(:web), class: 'athlete-img', alt: @athlete.last_name, title: @athlete.name %>
-      <% end %>
+      <%= image_tag athlete_image_path(@athlete), class: 'athlete-img', alt: @athlete.last_name, title: @athlete.name %>
       <% if @positions_count.present? %>
         <div class="d-flex flex-row justify-content-center align-items-center">
           <%= render 'medals' %>

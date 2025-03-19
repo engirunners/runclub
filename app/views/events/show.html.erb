@@ -8,13 +8,12 @@
     <p>Место: <%= @event.location %></p>
 
     <% @event.commands.order(:category, :position).each do |command| %>
-      <h3 class="mt-3">Команда "<%= command.name %>"</h3>
-
-      <p>Формат <%= command.form %></p>
-      <p>Категория <%= human_command_category command %></p>
-      <p>Итоговое время <%= human_result_time command %></p>
-      <p>Место в категории <%= command.position %>/<%= command.places_category %></p>
-      <p>Место в абсолюте <%= command.position_abs %>/<%= command.places_overall %></p>
+      <section class="fs-4 fw-bold mt-3 mt-md-4">Команда "<%= command.name %>"</section>
+      <p>Формат: <%= command.form %></p>
+      <p>Зачёт: <%= human_command_category command %></p>
+      <p>Итоговое время: <%= human_result_time command %></p>
+      <p>Место в категории: <%= command.position %>/<%= command.places_category %></p>
+      <p>Место в абсолюте: <%= command.position_abs %>/<%= command.places_overall %></p>
         <table class="table table-striped">
           <thead>
             <tr>
