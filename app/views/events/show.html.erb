@@ -8,7 +8,7 @@
     <p>Место: <%= @event.location %></p>
 
     <% @event.commands.order(:category, :position).each do |command| %>
-      <section class="fs-4 fw-bold mt-3 mt-md-4">Команда "<%= command.name %>"</section>
+      <section class="fs-4 fw-bold my-3 mt-md-4">Команда "<%= command.name %>"</section>
       <p>Формат: <%= command.form %></p>
       <p>Зачёт: <%= human_command_category command %></p>
       <p>Итоговое время: <%= human_result_time command %></p>

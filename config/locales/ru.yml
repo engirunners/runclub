@@ -67,6 +67,7 @@ ru:
         location: локация
         commands_count: команды
         image: фото
+        hidden: скрытая
       command:
         name: название
         total_time: результат

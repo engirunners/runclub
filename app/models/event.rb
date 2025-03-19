@@ -9,4 +9,6 @@ class Event < ApplicationRecord
   end
 
   validates :name, :date, presence: true
+
+  scope :visible, -> { where(hidden: false) }
 end

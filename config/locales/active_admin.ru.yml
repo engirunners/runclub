@@ -20,6 +20,8 @@ ru:
   admin:
     athletes:
       destroy_image: 'Фото удалено'
+    events:
+      destroy_image: 'Фото удалено'
   views:
     pagination:
       previous: '←'
