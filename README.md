@@ -58,3 +58,12 @@ sudo  systemctl restart ssh
 
 # install Redis
 ```
+
+## Development
+
+```
+rails db:prepare
+# Install Redis or run it in Docker
+docker run --name some-redis -d -p 6379:6379 redis:alpine
+rails s
+```
