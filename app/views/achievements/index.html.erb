@@ -1,16 +1,13 @@
 <%= head_info :title, 'Достижения' %>
 <% head_info :description, 'Основные достижения участников клуба Engirunners' %>
-<!-- Content -->
-<div class="my-5">
-  <div class="section">
-    <h1 class="mt-4 mb-3">Достижения</h1>
-    <% @achievements.each do |achievement| %>
-      <% if achievement.title.present? %>
-        <h2 class="mb-2"><%= achievement.title %></h2>
-      <% end %>
-      <div class="my-3">
-        <%= sanitized_text achievement.description %>
-      </div>
+<div class="section my-5">
+  <h1 class="fs-1 fw-bold mb-4">Достижения</h1>
+  <% @achievements.each do |achievement| %>
+    <% if achievement.title.present? %>
+      <h2 class="mb-2"><%= achievement.title %></h2>
     <% end %>
-  </div>
+    <div class="my-3">
+      <%= sanitized_text achievement.description %>
+    </div>
+  <% end %>
 </div>

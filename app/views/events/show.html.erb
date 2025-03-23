@@ -1,41 +1,39 @@
 <%= head_info :title, @event.name %>
 <% head_info :description, "Результаты участия в эстафете #{@event.name}" %>
-<section class="row my-5 mx-0">
-  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 px-3 px-lg-0">
-    <h1 class="mb-3"><%= @event.name %></h1>
-    <%= image_tag @event.image, class: 'img-fluid mt-4 mb-5', alt: @event.name, title: @event.name if @event.image.attached? %>
-    <p>Дата проведения: <%= l @event.date, format: :long %> года</p>
-    <p>Место: <%= @event.location %></p>
+<div class="section my-5">
+  <h1 class="fs-1 fw-bold mb-3"><%= @event.name %></h1>
+  <%= image_tag @event.image, class: 'img-fluid mt-4 mb-5', alt: @event.name, title: @event.name if @event.image.attached? %>
+  <p>Дата проведения: <%= l @event.date, format: :long %> года</p>
+  <p>Место: <%= @event.location %></p>
 
-    <% @event.commands.order(:category, :position).each do |command| %>
-      <section class="fs-4 fw-bold my-3 mt-md-4">Команда "<%= command.name %>"</section>
-      <p>Формат: <%= command.form %></p>
-      <p>Зачёт: <%= human_command_category command %></p>
-      <p>Итоговое время: <%= human_result_time command %></p>
-      <p>Место в категории: <%= command.position %>/<%= command.places_category %></p>
-      <p>Место в абсолюте: <%= command.position_abs %>/<%= command.places_overall %></p>
-        <table class="table table-striped">
-          <thead>
+  <% @event.commands.order(:category, :position).each do |command| %>
+    <section class="fs-4 fw-semibold my-3 mt-md-4">Команда "<%= command.name %>"</section>
+    <p>Формат: <%= command.form %></p>
+    <p>Зачёт: <%= human_command_category command %></p>
+    <p>Итоговое время: <%= human_result_time command %></p>
+    <p>Место в категории: <%= command.position %>/<%= command.places_category %></p>
+    <p>Место в абсолюте: <%= command.position_abs %>/<%= command.places_overall %></p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Этап</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Дистанция</th>
+            <th scope="col">Время</th>
+            <th scope="col" class="hidden-on-phone">Темп</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <% command.results.order(:stage).includes(:athlete).each do |result| %>
             <tr>
-              <th scope="col">Этап</th>
-              <th scope="col">Имя</th>
-              <th scope="col">Дистанция</th>
-              <th scope="col">Время</th>
-              <th scope="col" class="hidden-on-phone">Темп</th>
+              <th scope="row"><%= result.stage %></th>
+              <td><%= link_to result.athlete.name, athlete_path(result.athlete.nickname) %></td>
+              <td><%= human_distance result.distance %></td>
+              <td><%= human_result_time result %></td>
+              <td class="hidden-on-phone"><%= human_result_pace result.total_time, result.distance %></td>
             </tr>
-          </thead>
-          <tbody class="table-group-divider">
-            <% command.results.order(:stage).includes(:athlete).each do |result| %>
-              <tr>
-                <th scope="row"><%= result.stage %></th>
-                <td><%= link_to result.athlete.name, athlete_path(result.athlete.nickname) %></td>
-                <td><%= human_distance result.distance %></td>
-                <td><%= human_result_time result %></td>
-                <td class="hidden-on-phone"><%= human_result_pace result.total_time, result.distance %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-    <% end %>
-  </div>
-</section>
+          <% end %>
+        </tbody>
+      </table>
+  <% end %>
+</div>

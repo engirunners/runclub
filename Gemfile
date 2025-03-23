@@ -15,6 +15,7 @@ gem 'bootstrap'
 gem 'devise'
 gem 'devise-i18n'
 gem 'font-awesome-sass'
+gem 'get_process_mem'
 gem 'importmap-rails', '< 2.0.0'
 gem 'pg'
 gem 'puma'
@@ -24,10 +25,10 @@ gem 'redis', '>= 4.0.1'
 gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'sys-cpu'
+gem 'sys-filesystem'
 gem 'turbo-rails'
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
+gem 'whenever', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.13'

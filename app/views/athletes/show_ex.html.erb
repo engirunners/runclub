@@ -1,7 +1,7 @@
 <%= head_info :title, @athlete.name %>
 <% head_info :description, "#{@athlete.name} в настоящий момент в Engirunners не состоит" %>
 <div class="text-center my-5" style="min-height: 25vh">
-  <h1 class="fs-3 fw-bold mb-3 text-body-tertiary"><%= @athlete.name %></h1>
+  <h1 class="fs-2 fw-bold mb-3 text-body-tertiary"><%= @athlete.name %></h1>
 
   <p><span class="fw-bold">Дата дебюта:</span> <%= l @athlete.debut_date, format: :long %> года</p>
   <p>

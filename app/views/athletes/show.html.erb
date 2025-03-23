@@ -1,9 +1,9 @@
 <%= head_info :title, @athlete.name %>
 <% head_info :description, "#{@athlete.name} - достижения и список результатов в команде Engirunners" %>
-<div class="row mx-0">
+<div class="row mx-0 my-3">
   <div class="col-md-10 offset-md-1">
     <div class="text-center">
-      <h1 class="fs-3 fw-bold my-3"><%= @athlete.name %></h1>
+      <h1 class="fs-2 fw-bold my-3"><%= @athlete.name %></h1>
       <% unless @athlete.hide_birth_date %>
         <div class="mb-3 text-body-tertiary">
           Дата рождения: <%= @athlete.birth_date.strftime('%d.%m.%Y') %>

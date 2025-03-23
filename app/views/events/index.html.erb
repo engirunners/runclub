@@ -1,36 +1,34 @@
 <%= head_info :title, 'Список эстафет' %>
 <% head_info :description, 'Эстафеты, в которых принимал участие клуб Engirunners с момента своего основания' %>
-<section class="row my-5 mx-0">
-  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 px-3 px-lg-0">
-    <h1>Эстафеты</h1>
-    <%= image_tag '/images/events.webp', class: 'img-fluid my-3 my-md-4', alt: 'Эстафеты', title: 'Эстафеты' %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col no-pe">Дата</th>
-          <th scope="col">Название</th>
-          <th scope="col" class="text-center">Места</th>
-          <th scope="col" class="text-center">Наших команд</th>
+<div class="section my-5">
+  <h1 class="fs-1 fw-bold">Эстафеты</h1>
+  <%= image_tag '/images/events.webp', class: 'img-fluid my-3 my-md-4', alt: 'Эстафеты', title: 'Эстафеты' %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col no-pe">Дата</th>
+        <th scope="col">Название</th>
+        <th scope="col" class="text-center">Места</th>
+        <th scope="col" class="text-center">Наших команд</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      <% @events_grouped_by_year.each do |year, events| %>
+        <tr class="table-light table-active">
+          <th colspan="4" class="text-danger text-center fw-bold h3"><%= year %> год</th>
         </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <% @events_grouped_by_year.each do |year, events| %>
-          <tr class="table-light table-active">
-            <th colspan="4" class="text-danger text-center fw-bold h3"><%= year %> год</th>
+        <% events.each do |event| %>
+          <tr>
+            <th scope="row">
+              <span class="d-none d-sm-block"><%= l event.date, format: :brief %></span>
+              <span class="d-block d-sm-none"><%= l event.date, format: :short %></span>
+            </th>
+            <td><%= link_to event.name, event %></td>
+            <td class="text-center"><%= event.commands.map(&:position).sort.join(', ') %></td>
+            <td class="text-center"><%= event.commands.size %></td>
           </tr>
-          <% events.each do |event| %>
-            <tr>
-              <th scope="row">
-                <span class="d-none d-sm-block"><%= l event.date, format: :brief %></span>
-                <span class="d-block d-sm-none"><%= l event.date, format: :short %></span>
-              </th>
-              <td><%= link_to event.name, event %></td>
-              <td class="text-center"><%= event.commands.map(&:position).sort.join(', ') %></td>
-              <td class="text-center"><%= event.commands.size %></td>
-            </tr>
-          <% end %>
         <% end %>
-      </tbody>
-    </table>
-  </div>
-</section>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -24,6 +24,7 @@ require 'capistrano/rails/migrations'
 # require 'capistrano/postgresql'
 require 'capistrano/puma'
 require 'capistrano/nginx'
+require 'whenever/capistrano'
 
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Systemd
