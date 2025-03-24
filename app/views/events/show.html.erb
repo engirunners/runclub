@@ -2,7 +2,7 @@
 <% head_info :description, "Результаты участия в эстафете #{@event.name}" %>
 <div class="section my-5">
   <h1 class="fs-1 fw-bold mb-3"><%= @event.name %></h1>
-  <%= image_tag @event.image, class: 'img-fluid mt-4 mb-5', alt: @event.name, title: @event.name if @event.image.attached? %>
+  <%= image_tag @event.image.variant(:web), class: 'img-fluid mt-4 mb-5', alt: @event.name, title: @event.name if @event.image.attached? %>
   <p>Дата проведения: <%= l @event.date, format: :long %> года</p>
   <p>Место: <%= @event.location %></p>
 

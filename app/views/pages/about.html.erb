@@ -1,67 +1,65 @@
 <% head_info :title, 'О нас' %>
 <% head_info :description, 'Информация о беговом клубе Engirunners. История создания клуба, наши цели.' %>
-<section class="row my-5 mx-0">
-  <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 px-3 px-lg-0">
-    <h1 class="fs-1 fw-bold">О нас</h1>
-    <%= image_tag '/images/main_group.webp', class: 'img-fluid my-3 my-md-4', alt: 'Наша команда', title: 'Клуб' %>
-    <p class="mb-0">
-      Дата основания Engirunners – 4 ноября 2015 года. В этот день команда приняла участие в своём первом соревновании: это была Осенняя эстафета parkrun 5×1км. Достаточно высокое занятое тогда место (17 из 90) и сложившиеся дружеские отношения между участниками позволили команде продолжить регулярные выступления в эстафетных стартах уже ближайшей весной, а впоследствии – и значительно вырасти, достигнув одного из лучших показателей по количеству эстафетных стартов и занятых призовых мест в сегменте любительского бега в России.
-    </p>
-    <p>
-      Помимо любви к бегу и хорошим результатам, участников команды объединяет наличие у каждого технического образования и высокий уровень спортивной беговой подготовки.
-    </p>
+<div class="section my-5">
+  <h1 class="fs-1 fw-bold">О нас</h1>
+  <%= image_tag '/images/main_group.webp', class: 'img-fluid my-3 my-md-4', alt: 'Наша команда', title: 'Клуб' %>
+  <p class="mb-0">
+    Дата основания Engirunners – 4 ноября 2015 года. В этот день команда приняла участие в своём первом соревновании: это была Осенняя эстафета parkrun 5×1км. Достаточно высокое занятое тогда место (17 из 90) и сложившиеся дружеские отношения между участниками позволили команде продолжить регулярные выступления в эстафетных стартах уже ближайшей весной, а впоследствии – и значительно вырасти, достигнув одного из лучших показателей по количеству эстафетных стартов и занятых призовых мест в сегменте любительского бега в России.
+  </p>
+  <p>
+    Помимо любви к бегу и хорошим результатам, участников команды объединяет наличие у каждого технического образования и высокий уровень спортивной беговой подготовки.
+  </p>
 
-    <hr class="my-4 opacity-100">
+  <hr class="my-4 opacity-100">
 
-    <p class="fw-bold fs-4">
-      По состоянию на <%= l Date.current, format: :long %> г. в нашем активе:
-    </p>
+  <p class="fw-bold fs-4">
+    По состоянию на <%= l Date.current, format: :long %> г. в нашем активе:
+  </p>
 
-    <div class="d-flex align-items-center mb-4">
-      <div class="flex-shrink-0">
-        <i class="fa-solid fa-trophy text-danger fs-1"></i>
-      </div>
-      <div class="flex-grow-1 ms-3">
-        <p class="lead m-0"> всего эстафет – <span class="digits"><%= @events_count %></span></p>
-      </div>
+  <div class="d-flex align-items-center mb-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-trophy text-danger fs-1"></i>
     </div>
-
-    <div class="d-flex align-items-center mb-4">
-      <div class="flex-shrink-0">
-        <i class="fa-solid fa-person-running text-danger fs-1"></i>
-      </div>
-      <div class="flex-grow-1 ms-3">
-        <p class="lead m-0">составов на эстафетах – <span class="digits"><%= @commands_count %></span></p>
-      </div>
+    <div class="flex-grow-1 ms-3">
+      <p class="lead m-0"> всего эстафет – <span class="digits"><%= @events_count %></span></p>
     </div>
-
-    <div class="d-flex align-items-center mb-4">
-      <div class="flex-shrink-0">
-        <i class="fa-solid fa-medal fs-1" style="color: #ffad00;"></i>
-      </div>
-      <div class="flex-grow-1 ms-3">
-        <p class="lead m-0">первых мест – <span class="digits"><%= @position_counts[1] %></span></p>
-      </div>
-    </div>
-
-    <div class="d-flex align-items-center mb-4">
-      <div class="flex-shrink-0">
-        <i class="fa-solid fa-medal fs-1" style="color: #C0C0C0;"></i>
-      </div>
-      <div class="flex-grow-1 ms-3">
-        <p class="lead m-0">вторых мест – <span class="digits"><%= @position_counts[2] %></span></p>
-      </div>
-    </div>
-
-    <div class="d-flex align-items-center mb-4">
-      <div class="flex-shrink-0">
-        <i class="fa-solid fa-medal fs-1" style="color: #CD7F32;"></i>
-      </div>
-      <div class="flex-grow-1 ms-3">
-        <p class="lead m-0">третьих мест – <span class="digits"><%= @position_counts[3] %></span></p>
-      </div>
-    </div>
-
-    <hr class="opacity-100">
   </div>
-</section>
+
+  <div class="d-flex align-items-center mb-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-person-running text-danger fs-1"></i>
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <p class="lead m-0">составов на эстафетах – <span class="digits"><%= @commands_count %></span></p>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center mb-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-medal fs-1" style="color: #ffad00;"></i>
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <p class="lead m-0">первых мест – <span class="digits"><%= @position_counts[1] %></span></p>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center mb-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-medal fs-1" style="color: #C0C0C0;"></i>
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <p class="lead m-0">вторых мест – <span class="digits"><%= @position_counts[2] %></span></p>
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center mb-4">
+    <div class="flex-shrink-0">
+      <i class="fa-solid fa-medal fs-1" style="color: #CD7F32;"></i>
+    </div>
+    <div class="flex-grow-1 ms-3">
+      <p class="lead m-0">третьих мест – <span class="digits"><%= @position_counts[3] %></span></p>
+    </div>
+  </div>
+
+  <hr class="opacity-100">
+</div>
