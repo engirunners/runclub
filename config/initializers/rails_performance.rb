@@ -11,7 +11,8 @@ RailsPerformance.setup do |config|
     'RailsPerformance::RailsPerformanceController#recent', 'RailsPerformance::RailsPerformanceController#slow',
     'RailsPerformance::RailsPerformanceController#requests', 'RailsPerformance::RailsPerformanceController#rake',
     'RailsPerformance::RailsPerformanceController#crashes', 'RailsPerformance::RailsPerformanceController#trace',
-    'RailsPerformance::RailsPerformanceController#sidekiq', 'RailsPerformance::RailsPerformanceController#summary'
+    'RailsPerformance::RailsPerformanceController#sidekiq', 'RailsPerformance::RailsPerformanceController#summary',
+    'RailsPerformance::RailsPerformanceController#resources'
   ]
 
   config.custom_data_proc = proc do |env|
