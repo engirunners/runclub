@@ -45,6 +45,7 @@ ru:
         nickname: ник
         first_name: имя
         last_name: фамилия
+        description: описание
         hide_birth_date: скрыть дату рождения
         birth_date: дата рождения
         debut_date: дата дебюта

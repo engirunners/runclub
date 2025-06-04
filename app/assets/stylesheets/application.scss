@@ -162,3 +162,7 @@ a.nav-link.active {
   font-style: normal;
   color: $danger;
 }
+
+.description p, ol, ul {
+  margin: 0;
+}

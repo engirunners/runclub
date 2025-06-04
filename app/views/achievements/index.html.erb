@@ -6,7 +6,7 @@
     <% if achievement.title.present? %>
       <h2 class="mb-2"><%= achievement.title %></h2>
     <% end %>
-    <div class="my-3">
+    <div class="my-3 description">
       <%= sanitized_text achievement.description %>
     </div>
   <% end %>
