@@ -31,9 +31,8 @@ ActiveAdmin.register Achievement do
                                     toolbar: [
                                       %w[bold italic strike],
                                       %w[blockquote code-block],
-                                      [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+                                      [{ list: 'ordered' }, { list: 'bullet' }],
                                       [{ indent: '-1' }, { indent: '+1' }],
-                                      [{ direction: 'rtl' }],
                                       ['link'],
                                       ['clean'],
                                     ],
