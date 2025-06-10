@@ -74,6 +74,10 @@ ru:
         total_time: результат
         fractional_second: доли секунды
         category: зачёт
+        kind: тип
+        kinds:
+          plain: обычный
+          tri: триатлон
         categories:
           mf: смешанный
           mm: мужской

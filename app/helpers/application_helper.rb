@@ -40,11 +40,11 @@ module ApplicationHelper
     return format '%<min>d:%<sec>02d /км', min: avg_sec / 60, sec: avg_sec % 60 if result.run?
     return format '%<min>d:%<sec>02d /100м', min: avg_sec / 600, sec: avg_sec / 10 % 60 if result.swim?
 
-    "#{(3600.0 / avg_sec).round} км/ч"
+    "#{(3600.0 / avg_sec).round(1)} км/ч"
   end
 
   def human_result_stage(result)
-    result.run? ? result.stage : human_result_kind(result)
+    result.command.plain? ? result.stage : human_result_kind(result)
   end
 
   def time_to_sec(time)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_09_210000) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_10_181421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_09_210000) do
     t.datetime "updated_at", null: false
     t.integer "results_count"
     t.integer "fractional_second"
+    t.integer "kind", default: 0, null: false
     t.index ["event_id"], name: "index_commands_on_event_id"
   end
 
