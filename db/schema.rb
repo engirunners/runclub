@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_06_04_170540) do
+ActiveRecord::Schema[7.2].define(version: 2025_06_09_210000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -128,6 +128,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_06_04_170540) do
     t.datetime "updated_at", null: false
     t.bigint "command_id", null: false
     t.integer "fractional_second"
+    t.integer "kind", default: 0, null: false
     t.index ["athlete_id"], name: "index_results_on_athlete_id"
     t.index ["command_id", "stage"], name: "index_results_on_command_id_and_stage", unique: true
   end

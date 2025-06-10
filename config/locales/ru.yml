@@ -94,6 +94,12 @@ ru:
         total_time: время
         fractional_second: доли секунды
         athlete: спортсмен
+        kind: вид
+        kinds:
+          run: бег
+          ski: лыжи
+          swim: плавание
+          bike: вело
       user:
         created_at: создан
         password: пароль

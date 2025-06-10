@@ -31,10 +31,10 @@ ActiveAdmin.register Command do
       f.input :fractional_second, as: :select, collection: 0..99
       f.input :category, include_blank: false
       f.input :form
-      f.input :position_abs
-      f.input :places_overall
-      f.input :position
-      f.input :places_category
+      f.input :position_abs, input_html: { inputmode: 'numeric' }
+      f.input :places_overall, input_html: { inputmode: 'numeric' }
+      f.input :position, input_html: { inputmode: 'numeric' }
+      f.input :places_category, input_html: { inputmode: 'numeric' }
     end
     f.actions
   end

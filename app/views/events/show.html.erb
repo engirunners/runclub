@@ -25,11 +25,11 @@
         <tbody class="table-group-divider">
           <% command.results.order(:stage).includes(:athlete).each do |result| %>
             <tr>
-              <th scope="row"><%= result.stage %></th>
+              <th scope="row"><%= human_result_stage result %></th>
               <td><%= link_to result.athlete.name, athlete_path(result.athlete.nickname) %></td>
               <td><%= human_distance result.distance %></td>
               <td><%= human_result_time result %></td>
-              <td class="hidden-on-phone"><%= human_result_pace result.total_time, result.distance %></td>
+              <td class="hidden-on-phone"><%= human_result_pace result %></td>
             </tr>
           <% end %>
         </tbody>

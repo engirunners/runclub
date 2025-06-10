@@ -22,20 +22,29 @@ module ApplicationHelper
   end
 
   def human_result_time(time)
-    return 'xx:xx' unless (total_time = time.total_time)
+    return unless (total_time = time.total_time)
 
     time_format = '%M:%S'
     time_format = "%H:#{time_format}" if total_time.hour.positive?
     time_format = "#{time_format},#{format '%02d', time.fractional_second}" if time.fractional_second.present?
 
-    total_time.strftime(time_format)
+    result_time = total_time.strftime(time_format)
+    result_time unless result_time == '00:00'
   end
 
-  def human_result_pace(time, distance = 5)
-    return unless time
+  def human_result_pace(result)
+    return unless result.total_time
 
-    avg_sec = (time_to_sec(time) / distance.to_f).round
-    format '%<min>d:%<sec>02d', min: avg_sec / 60, sec: avg_sec % 60
+    avg_sec = (time_to_sec(result.total_time) / result.distance.to_f).round
+    return if avg_sec.zero?
+    return format '%<min>d:%<sec>02d /км', min: avg_sec / 60, sec: avg_sec % 60 if result.run?
+    return format '%<min>d:%<sec>02d /100м', min: avg_sec / 600, sec: avg_sec / 10 % 60 if result.swim?
+
+    "#{(3600.0 / avg_sec).round} км/ч"
+  end
+
+  def human_result_stage(result)
+    result.run? ? result.stage : human_result_kind(result)
   end
 
   def time_to_sec(time)
@@ -48,6 +57,10 @@ module ApplicationHelper
 
   def human_athlete_gender(athlete)
     t "activerecord.attributes.athlete.genders.#{athlete.gender}"
+  end
+
+  def human_result_kind(result)
+    t "activerecord.attributes.result.kinds.#{result.kind}"
   end
 
   def human_distance(distance)
