@@ -59,7 +59,7 @@ ActiveAdmin.register Athlete do
       f.input :first_name, as: :string
       f.input :last_name, as: :string
       f.input :hide_birth_date
-      f.input :birth_date, start_year: 80.years.ago.year, end_year: 14.years.ago.year
+      f.input :birth_date, start_year: 80.years.ago.year, end_year: 7.years.ago.year
       f.input :gender, include_blank: false
       f.input :debut_date, start_year: 2015, end_year: Date.current.year
       f.input :description, as: :quill_editor,
