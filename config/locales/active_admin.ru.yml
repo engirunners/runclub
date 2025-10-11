@@ -17,6 +17,11 @@ ru:
         new_model: 'Добавить партнёра'
         edit_model: 'Изменить партнёра'
         delete_model: 'Удалить партнёра'
+    scopes:
+      active: 'Активные'
+      all: 'Все'
+      exited: 'Выбывшие'
+
   admin:
     athletes:
       destroy_image: 'Фото удалено'

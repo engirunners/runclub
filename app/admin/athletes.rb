@@ -6,10 +6,15 @@ ActiveAdmin.register Athlete do
   permit_params(
     :nickname, :image, :first_name, :last_name, :birth_date, :hide_birth_date, :debut_date, :exit_date, :description,
     :parkrun_link, :gender, :fiveverst_link, :s95_link, :probeg_link, :strava_link, :telegram_link, :instagram_link,
+    :lichess_link,
   )
 
   config.paginate = false
   config.sort_order = 'last_name_asc'
+
+  scope :active, default: true
+  scope :all
+  scope(:exited) { |s| s.where.not(exit_date: nil) }
 
   index row_class: ->(a) { [('ex' if a.exit_date.present?), ('hidden-birth-date' if a.hide_birth_date)].compact } do
     column(:image) { |a| image_tag a.image.variant(:thumb) if a.image.attached? }
@@ -26,6 +31,7 @@ ActiveAdmin.register Athlete do
     column(:parkrun_link, sortable: false) { |a| a.parkrun_link.present? }
     column(:telegram_link, sortable: false) { |a| a.telegram_link.present? }
     column(:instagram_link, sortable: false) { |a| a.instagram_link.present? }
+    column(:lichess_link, sortable: false) { |a| a.lichess_link.present? }
     column :exit_date
 
     actions dropdown: true
@@ -47,6 +53,7 @@ ActiveAdmin.register Athlete do
       row :parkrun_link
       row :telegram_link
       row :instagram_link
+      row :lichess_link
       row :exit_date
       row(:image) { |a| image_tag a.image.variant(:web) if a.image.attached? }
     end
@@ -90,6 +97,7 @@ ActiveAdmin.register Athlete do
       f.input :parkrun_link
       f.input :telegram_link
       f.input :instagram_link
+      f.input :lichess_link
     end
     f.inputs 'Заполняется в случае выхода спортсмена из клуба' do
       f.input :exit_date, start_year: 2015, end_year: Date.current.year

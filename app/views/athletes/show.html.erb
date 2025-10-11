@@ -15,7 +15,7 @@
         </div>
       <% end %>
       <div class="d-flex flex-row flex-wrap justify-content-center align-items-center mt-4">
-        <% %w[fiveverst s95 parkrun probeg strava telegram instagram].each do |contact_type| %>
+        <% %w[fiveverst s95 parkrun probeg strava telegram instagram lichess].each do |contact_type| %>
           <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
 
           <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
