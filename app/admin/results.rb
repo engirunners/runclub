@@ -34,7 +34,7 @@ ActiveAdmin.register Result do
       f.input :stage, as: :select, collection: 1..100, include_blank: false
       f.input :kind, include_blank: false
       f.input :distance, input_html: { inputmode: 'numeric' }
-      f.input :athlete, as: :searchable_select
+      f.input :athlete, as: :searchable_select, collection: Athlete.order('exit_date DESC NULLS FIRST', :last_name)
       f.input :total_time, as: :time_select, include_seconds: true, ignore_date: true, include_blank: false
       f.input :fractional_second, as: :select, collection: 0..99
     end
