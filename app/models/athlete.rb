@@ -16,6 +16,10 @@ class Athlete < ApplicationRecord
 
   enum :gender, { male: 0, female: 1 }, validate: { allow_nil: false }
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[exit_date]
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
