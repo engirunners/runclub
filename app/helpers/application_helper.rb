@@ -65,9 +65,8 @@ module ApplicationHelper
 
   def human_distance(distance)
     return "#{(1000 * distance).to_i}м" if distance < 1
-    return format('%d', distance) if distance == distance.to_i
 
-    number_with_delimiter distance
+    "#{distance == distance.to_i ? distance.to_i : number_with_delimiter(distance)}км"
   end
 
   def sanitized_text(text)
@@ -80,7 +79,7 @@ module ApplicationHelper
 
   def athlete_image_path(athlete, variant: :web)
     if athlete.image.attached?
-      rails_representation_url(athlete.image.variant(variant))
+      rails_representation_url athlete.image.variant(variant)
     else
       "/images/unknown_#{athlete.gender}.png"
     end
