@@ -10,16 +10,26 @@
       <% end %>
       <%= image_tag athlete_image_path(@athlete), class: 'athlete-img', alt: @athlete.last_name, title: @athlete.name %>
       <% if @positions_count.present? %>
-        <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="d-flex flex-row justify-content-center align-items-center" data-controller="tooltip">
           <%= render 'medals' %>
         </div>
       <% end %>
-      <div class="d-flex flex-row flex-wrap justify-content-center align-items-center mt-4">
+      <div class="d-flex flex-row flex-wrap justify-content-center align-items-center mt-4" data-controller="tooltip">
         <% %w[fiveverst s95 parkrun probeg strava telegram instagram lichess].each do |contact_type| %>
           <% next unless (contact_url = @athlete.public_send(:"#{contact_type}_link")).present? %>
 
           <%= link_to contact_url, class: 'text-decoration-none', target: '_blank', rel: 'noopener' do %>
-            <%= image_tag("/images/contacts/#{contact_type}.png", class: 'social-link', alt: t(contact_type), title: t(contact_type)) %>
+            <%=
+              image_tag(
+                "/images/contacts/#{contact_type}.png",
+                class: 'social-link',
+                alt: t(contact_type),
+                'data-tooltip-target' => 'element',
+                'data-bs-toggle' => 'tooltip',
+                'data-bs-placement' => 'top',
+                'data-bs-title' => t(contact_type),
+              )
+            %>
           <% end %>
         <% end %>
       </div>

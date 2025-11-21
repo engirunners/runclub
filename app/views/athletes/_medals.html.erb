@@ -8,7 +8,10 @@
 <% (1..3).each do |place| %>
   <% if count = @positions_count[place] %>
     <div class="mx-2" style="color: <%= options[place][:color] %>;">
-      <i class="medal-icon" title="<%= options[place][:title] %>"></i> x <%= count %>
+      <span class="d-inline-block" data-tooltip-target="element" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<%= options[place][:title] %>">
+        <i class="medal-icon"></i>
+      </span>
+      x <%= count %>
     </div>
   <% end %>
 <% end %>
