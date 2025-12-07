@@ -27,6 +27,7 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'sys-cpu'
 gem 'sys-filesystem'
+gem 'terser'
 gem 'turbo-rails'
 gem 'whenever', require: false
 
