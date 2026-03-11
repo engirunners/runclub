@@ -24,7 +24,7 @@
               <span class="d-block d-sm-none"><%= l event.date, format: :short %></span>
             </th>
             <td><%= link_to event.name, event %></td>
-            <td class="text-center"><%= event.commands.map(&:position).sort.join(', ') %></td>
+            <td class="text-center"><%= event.commands.map(&:get_str_pos).sort.join(', ') %></td>
             <td class="text-center"><%= event.commands.size %></td>
           </tr>
         <% end %>

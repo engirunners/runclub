@@ -79,6 +79,11 @@ ru:
         kinds:
           plain: обычный
           tri: триатлон
+        status: статус
+        statuses:
+          OK: OK
+          DNF: DNF
+          DQ: DQ
         categories:
           mf: смешанный
           mm: мужской
