@@ -5,6 +5,7 @@ class Command < ApplicationRecord
   has_many :results, dependent: :destroy
 
   validates :name, presence: true
+  validates :position, :position_abs, absence: true, if: :ok?
   validates :position, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :position_abs, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :places_category, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
@@ -15,9 +16,7 @@ class Command < ApplicationRecord
   enum :category, { mf: 0, mm: 1, ff: 2 }, validate: { allow_nil: false }
   enum :status, { ok: 0, dnf: 1, dq: 2 }, default: 0, validate: { allow_nil: false }
 
-  before_validation :check_status
   default_scope {order(:status , :position , :position_abs)}
-  #default_scope {order(position: :desc, position_abs: :desc)}
 
   def position_to_s
     return format_position(position, status)
@@ -28,13 +27,6 @@ class Command < ApplicationRecord
   end
 
   private
-
-  def check_status
-    if self.status != "OK" 
-      self.position = nil 
-      self.position_abs = nil
-    end
-  end
 
   def format_position(position,status)
     if status != "ok"
