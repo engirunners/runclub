@@ -84,6 +84,10 @@ ru:
           ok: OK
           dnf: DNF
           dq: DQ
+        long_statuses:
+          dnf: Команда не финишировала
+          dq:  Команда дисквалифицирована
+        note: примечание
         categories:
           mf: смешанный
           mm: мужской

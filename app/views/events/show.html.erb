@@ -10,8 +10,15 @@
     <p>Формат: <%= command.form %></p>
     <p>Зачёт: <%= human_command_category command %></p>
     <p>Итоговое время: <%= human_result_time command %></p>
+    <% if command.status == "ok" %>
     <p>Место в категории: <%= command.position_to_s %>/<%= command.places_category %></p>
     <p>Место в абсолюте: <%= command.position_abs_to_s %>/<%= command.places_overall %></p>
+    <% else %>
+    <p><%= command_long_status command.status %></p>
+    <% end %>
+    <% if command.note.present? %>
+    <p><%= command.note %></p>
+    <% end %>
       <table class="table table-striped">
         <thead>
           <tr>
