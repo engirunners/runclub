@@ -10,8 +10,8 @@
     <p>Формат: <%= command.form %></p>
     <p>Зачёт: <%= human_command_category command %></p>
     <p>Итоговое время: <%= human_result_time command %></p>
-    <p>Место в категории: <%= command.get_str_pos %>/<%= command.places_category %></p>
-    <p>Место в абсолюте: <%= command.get_str_pos_abs %>/<%= command.places_overall %></p>
+    <p>Место в категории: <%= command.position_to_s %>/<%= command.places_category %></p>
+    <p>Место в абсолюте: <%= command.position_abs_to_s %>/<%= command.places_overall %></p>
       <table class="table table-striped">
         <thead>
           <tr>

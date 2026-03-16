@@ -64,7 +64,7 @@
               <td><%= l command_result.event.date %></td>
               <td><%= link_to command_result.event.name, command_result.event %></td>
               <td class="hidden-on-phone"><%= command_result.form %></td>
-              <td class="text-center"><%= command_result.get_str_pos %></td>
+              <td class="text-center"><%= command_result.position_to_s %></td>
             </tr>
           <% end %>
         </tbody>

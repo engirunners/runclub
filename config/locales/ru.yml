@@ -81,9 +81,9 @@ ru:
           tri: триатлон
         status: статус
         statuses:
-          OK: OK
-          DNF: DNF
-          DQ: DQ
+          ok: OK
+          dnf: DNF
+          dq: DQ
         categories:
           mf: смешанный
           mm: мужской

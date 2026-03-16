@@ -13,16 +13,18 @@ class Command < ApplicationRecord
 
   enum :kind, { plain: 0, tri: 1 }, default: 0, validate: { allow_nil: false }
   enum :category, { mf: 0, mm: 1, ff: 2 }, validate: { allow_nil: false }
-  enum :status, { OK: 0, DNF: 1, DQ: 2 }, default: 0, validate: { allow_nil: false }
+  enum :status, { ok: 0, dnf: 1, dq: 2 }, default: 0, validate: { allow_nil: false }
 
   before_validation :check_status
+  default_scope {order(:status , :position , :position_abs)}
+  #default_scope {order(position: :desc, position_abs: :desc)}
 
-  def get_str_pos
-    self.status == "OK" ? self.position : self.status
+  def position_to_s
+    return format_position(position, status)
   end
 
-  def get_str_pos_abs
-    self.status == "OK" ? self.position_abs : self.status 
+  def position_abs_to_s
+    return format_position(position_abs, status)
   end
 
   private
@@ -33,4 +35,12 @@ class Command < ApplicationRecord
       self.position_abs = nil
     end
   end
+
+  def format_position(position,status)
+    if status != "ok"
+      return I18n.t "activerecord.attributes.command.statuses.#{status}"
+    end
+    return position
+  end
+
 end
