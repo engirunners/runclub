@@ -9,7 +9,8 @@ class Command < ApplicationRecord
   validates :position, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :position_abs, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :places_category, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
-  validates :places_overall, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
+  validates :position, :position_abs, :places_category, :places_overall, 
+            numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :fractional_second, numericality: { only_integer: true, in: 0..99 }, allow_nil: true
 
   enum :category, { mf: 0, mm: 1, ff: 2 }, validate: { allow_nil: false }
