@@ -10,5 +10,7 @@ class Event < ApplicationRecord
 
   validates :name, :date, presence: true
 
+  enum :kind, { road: 0, tri: 1, track: 2, trail: 3, ski: 4, swim: 5, bike: 6 }, default: 0, validate: { allow_nil: false }
+
   scope :visible, -> { where(hidden: false) }
 end

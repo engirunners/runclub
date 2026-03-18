@@ -6,13 +6,12 @@ ActiveAdmin.register Command do
 
   permit_params(
     :event_id, :name, :category, :form, :position, :position_abs, :places_category, :places_overall,
-    :total_time, :fractional_second, :kind, :status, :note
+    :total_time, :fractional_second, :status, :note
   )
 
   config.sort_order = 'position_asc'
 
   index do
-    column :kind
     column(:name) { |c| link_to c.name, admin_command_results_path(c) }
     column(:total_time) { |c| human_result_time c }
     column(:category) { |c| human_command_category c }
@@ -32,7 +31,6 @@ ActiveAdmin.register Command do
       f.input :name
       f.input :total_time, as: :time_select, include_seconds: true, ignore_date: true, include_blank: false
       f.input :fractional_second, as: :select, collection: 0..99
-      f.input :kind, include_blank: false
       f.input :category, include_blank: false
       f.input :form
       f.input :position_abs, input_html: { inputmode: 'numeric' }

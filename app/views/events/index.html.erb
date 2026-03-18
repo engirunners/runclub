@@ -4,18 +4,19 @@
   <h1 class="fs-1 fw-bold">Эстафеты</h1>
   <%= image_tag '/images/events.webp', class: 'img-fluid my-3 my-md-4', alt: 'Эстафеты', title: 'Эстафеты' %>
   <table class="table table-striped">
+  <%= maxcommands = Event.maximum(:commands_count) || 0 %>
     <thead>
       <tr>
         <th scope="col no-pe">Дата</th>
+        <th scope="col">Вид</th>
         <th scope="col">Название</th>
-        <th scope="col" class="text-center">Места</th>
-        <th scope="col" class="text-center">Наших команд</th>
-      </tr>
+        <th scope="col" class="text-center" colspan=<%= maxcommands%>>Места</th>
+      </tr> 
     </thead>
     <tbody class="table-group-divider">
       <% @events_grouped_by_year.each do |year, events| %>
         <tr class="table-light table-active">
-          <th colspan="4" class="text-danger text-center fw-bold h3"><%= year %> год</th>
+        <th colspan=<%= 4+maxcommands %> class="text-danger text-center fw-bold h3"><%= year %> год</th>
         </tr>
         <% events.each do |event| %>
           <tr>
@@ -23,9 +24,14 @@
               <span class="d-none d-sm-block"><%= l event.date, format: :brief %></span>
               <span class="d-block d-sm-none"><%= l event.date, format: :short %></span>
             </th>
+            <td><img src=<%= event_kind event.kind %>></td>
             <td><%= link_to event.name, event %></td>
-            <td class="text-center"><%= event.commands.map(&:position_to_s).join(', ') %></td>
-            <td class="text-center"><%= event.commands.size %></td>
+            <% event.commands.size.times do |i| %>
+              <td class="text-center" style="width:10px"><%= event.commands[i].position_to_s %></td>
+            <% end %>
+            <% if maxcommands > event.commands.size %>
+              <td style="width:10px" colspan=<%= maxcommands-event.commands.size %>></td>
+            <% end %>
           </tr>
         <% end %>
       <% end %>

@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def human_result_stage(result)
-    result.command.plain? ? result.stage : human_result_kind(result)
+    result.command.event.tri? ? human_result_kind(result) : result.stage
   end
 
   def time_to_sec(time)
@@ -63,8 +63,8 @@ module ApplicationHelper
     t "activerecord.attributes.result.kinds.#{result.kind}"
   end
 
-  def human_distance(distance)
-    return "#{(1000 * distance).to_i}м" if distance < 1
+  def human_distance(distance, kind)
+    return "#{(1000 * distance).to_i}м" if distance < 1 || kind == "track" 
 
     "#{distance == distance.to_i ? distance.to_i : number_with_delimiter(distance)}км"
   end
@@ -89,4 +89,8 @@ module ApplicationHelper
     t "activerecord.attributes.command.long_statuses.#{status}"
   end
 
+  def event_kind(kind)
+    "images/kinds/#{kind}.png"
+  end
+  
 end
