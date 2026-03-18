@@ -6,7 +6,7 @@ ActiveAdmin.register Command do
 
   permit_params(
     :event_id, :name, :category, :form, :position, :position_abs, :places_category, :places_overall,
-    :total_time, :fractional_second, :kind,
+    :total_time, :fractional_second, :kind, :status, :note
   )
 
   config.sort_order = 'position_asc'
@@ -22,6 +22,8 @@ ActiveAdmin.register Command do
     column :places_overall
     column :position
     column :places_category
+    column :status
+    column :note
     actions dropdown: true
   end
 
@@ -37,6 +39,8 @@ ActiveAdmin.register Command do
       f.input :places_overall, input_html: { inputmode: 'numeric' }
       f.input :position, input_html: { inputmode: 'numeric' }
       f.input :places_category, input_html: { inputmode: 'numeric' }
+      f.input :status, include_blank: false
+      f.input :note
     end
     f.actions
   end
