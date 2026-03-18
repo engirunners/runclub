@@ -4,7 +4,7 @@
   <h1 class="fs-1 fw-bold">Эстафеты</h1>
   <%= image_tag '/images/events.webp', class: 'img-fluid my-3 my-md-4', alt: 'Эстафеты', title: 'Эстафеты' %>
   <table class="table table-striped">
-  <%= maxcommands = Event.maximum(:commands_count) || 0 %>
+  <% maxcommands = Event.maximum(:commands_count) || 0 %>
     <thead>
       <tr>
         <th scope="col no-pe">Дата</th>
