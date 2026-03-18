@@ -9,7 +9,7 @@ class Command < ApplicationRecord
   validates :position, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :position_abs, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :places_category, numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
-  validates :position, :position_abs, :places_category, :places_overall, 
+  validates :position, :position_abs, :places_category, :places_overall,
             numericality: { greater_than_or_equal_to: 1 }, allow_nil: true
   validates :fractional_second, numericality: { only_integer: true, in: 0..99 }, allow_nil: true
 
@@ -17,21 +17,5 @@ class Command < ApplicationRecord
   enum :category, { mf: 0, mm: 1, ff: 2 }, validate: { allow_nil: false }
   enum :status, { ok: 0, dnf: 1, dq: 2 }, default: 0, validate: { allow_nil: false }
 
-  def position_to_s
-    return format_position(position, status)
-  end
-
-  def position_abs_to_s
-    return format_position(position_abs, status)
-  end
-
-  private
-
-  def format_position(position,status)
-    if status != "ok"
-      return I18n.t "activerecord.attributes.command.statuses.#{status}"
-    end
-    return position
-  end
-
+  def position_to_s = ok? ? position : status.upcase
 end

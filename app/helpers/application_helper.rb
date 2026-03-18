@@ -84,9 +84,4 @@ module ApplicationHelper
       "/images/unknown_#{athlete.gender}.png"
     end
   end
-
-  def command_long_status(status)
-    t "activerecord.attributes.command.long_statuses.#{status}"
-  end
-
 end
