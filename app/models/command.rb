@@ -16,8 +16,6 @@ class Command < ApplicationRecord
   enum :category, { mf: 0, mm: 1, ff: 2 }, validate: { allow_nil: false }
   enum :status, { ok: 0, dnf: 1, dq: 2 }, default: 0, validate: { allow_nil: false }
 
-  default_scope {order(:status , :position , :position_abs)}
-
   def position_to_s
     return format_position(position, status)
   end
