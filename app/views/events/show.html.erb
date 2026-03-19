@@ -11,7 +11,7 @@
     <p>Зачёт: <%= human_command_category command %></p>
     <p>Итоговое время: <%= human_result_time command %></p>
     <% if command.status == "ok" %>
-      <p>Место в категории: <%= command.position_to_s %>/<%= command.places_category %></p>
+      <p>Место в категории: <%= format_position command.position, command.status %>/<%= command.places_category %></p>
       <p>Место в абсолюте: <%= command.position_abs %>/<%= command.places_overall %></p>
     <% else %>
       <p><%= t ".statuses.#{command.status}" %></p>

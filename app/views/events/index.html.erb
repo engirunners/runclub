@@ -27,7 +27,7 @@
             <td><img src=<%= event_kind event.kind %>></td>
             <td><%= link_to event.name, event %></td>
             <% event.commands.size.times do |i| %>
-              <td class="text-center" style="width:10px"><%= event.commands[i].position_to_s %></td>
+              <td class="text-center" style="width:10px"><%= format_position event.commands[i].position, event.commands[i].status %></td>
             <% end %>
             <% if maxcommands > event.commands.size %>
               <td style="width:10px" colspan=<%= maxcommands-event.commands.size %>></td>
