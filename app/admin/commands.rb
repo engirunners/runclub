@@ -21,8 +21,8 @@ ActiveAdmin.register Command do
     column :places_overall
     column :position
     column :places_category
-    column :status
-    column :note
+    column(:status) { |c| c.status.upcase }
+    column(:note) { |c| c.note.present? }
     actions dropdown: true
   end
 
