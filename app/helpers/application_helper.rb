@@ -94,13 +94,13 @@ module ApplicationHelper
   end
   
   def format_position(position, status, colorize=true)
-    if status != "ok"
-      return I18n.t "activerecord.attributes.command.statuses.#{status}"
+    if status!="ok"
+      return status.upcase
     elsif position<4 && colorize
       colors = ['#ffad00', '#C0C0C0', '#CD7F32']
-      return ('<span class="circle_highlight" style="background-color:'+colors[position-1]+'">'+position.to_s+'</span>').html_safe
+      return ("<span class='circle_highlight' style='background-color:#{colors[position-1]}'>#{position}</span>").html_safe
     end
-    return  position  
+    return position  
   end
 
 end

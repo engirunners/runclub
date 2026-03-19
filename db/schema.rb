@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_10_11_120000) do
+ActiveRecord::Schema[7.2].define(version: 2026_03_06_145234) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,7 +92,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_11_120000) do
     t.time "total_time"
     t.integer "category", default: 0, null: false
     t.string "form"
-    t.integer "position", default: 1, null: false
+    t.integer "position", default: 1
     t.integer "places_overall"
     t.integer "position_abs"
     t.integer "places_category"
@@ -101,6 +101,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_11_120000) do
     t.integer "results_count"
     t.integer "fractional_second"
     t.integer "kind", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.string "note"
     t.index ["event_id"], name: "index_commands_on_event_id"
   end
 
