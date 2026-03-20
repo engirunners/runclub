@@ -3,6 +3,10 @@
 class Command < ApplicationRecord
   belongs_to :event, counter_cache: true
   has_many :results, dependent: :destroy
+  has_one_attached :image do |attachable|
+    attachable.variant :thumb, resize_to_fill: [200, 150], preprocessed: true
+    attachable.variant :web, resize_to_fill: [640, 360], preprocessed: true
+  end
 
   validates :name, presence: true
   validates :position, :position_abs, absence: true, unless: :ok?

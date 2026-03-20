@@ -7,6 +7,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.visible.find(params[:id])
+    @event = Event.visible.includes(commands: :image_attachment).find(params[:id])
   end
 end

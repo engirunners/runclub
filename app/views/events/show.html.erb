@@ -1,47 +1,57 @@
 <% head_info :description, "Результаты участия в эстафете #{@event.name}" %>
 <div class="section my-5">
-  <h1 class="fs-1 fw-bold mb-3"><%= head_info :title, @event.name %></h1>
-  <%= image_tag @event.image.variant(:web), class: 'img-fluid mb-5', alt: @event.name, title: @event.name if @event.image.attached? %>
-  <p>Дата проведения: <%= l @event.date, format: :long %> года</p>
-  <p>Место: <%= @event.location %></p>
+  <h1 class="text-center fs-1 fw-bold mb-3"><%= head_info :title, @event.name %></h1>
+  <p class="text-center">Дата проведения: <%= l @event.date, format: :long %> года</p>
+  <p class="text-center">Место: <%= @event.location %></p>
 
   <% @event.commands.each do |command| %>
-    <section class="fs-4 fw-semibold my-3 mt-md-4">Команда "<%= command.name %>"</section>
-    <p>Формат: <%= command.form %></p>
-    <p>Зачёт: <%= human_command_category command %></p>
-    <% if not human_result_time(command).nil? %>
-      <p>Итоговое время: <%= human_result_time command %></p>
-    <% end %>
-    <% if command.ok? %>
-      <p>Место в категории: <%= format_position command.position, command.status %>/<%= command.places_category %></p>
-      <p>Место в абсолюте: <%= command.position_abs %>/<%= command.places_overall %></p>
-    <% else %>
-      <p><%= t "activerecord.attributes.command.statuses.#{command.status}" %></p>
-    <% end %>
-    <% if command.note.present? %>
-      <p><%= command.note %></p>
-    <% end %>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Этап</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Дистанция</th>
-            <th scope="col">Время</th>
-            <th scope="col" class="hidden-on-phone">Темп</th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          <% command.results.order(:stage).includes(:athlete).each do |result| %>
-            <tr>
-              <th scope="row"><%= human_result_stage result %></th>
-              <td><%= link_to result.athlete.name, athlete_path(result.athlete.nickname) %></td>
-              <td><%= human_distance result.distance, @event.kind %></td>
-              <td><%= human_result_time result %></td>
-              <td class="hidden-on-phone"><%= human_result_pace result %></td>
-            </tr>
+    <hr>
+    <div class="container">
+      <div class="row align-items-stretch">
+        <div class="col-md-4 p-0">
+          <section class="fs-4 fw-semibold my-3 mt-md-4">Команда "<%= command.name %>"</section>
+          <p>Формат: <%= command.form %></p>
+          <p>Зачёт: <%= human_command_category command %></p>
+          <% if not human_result_time(command).nil? %>
+            <p>Итоговое время: <%= human_result_time command %></p>
           <% end %>
-        </tbody>
-      </table>
+          <% if command.ok? %>
+            <p>Место в категории: <%= format_position command.position, command.status %>/<%= command.places_category %></p>
+            <p>Место в абсолюте: <%= command.position_abs %>/<%= command.places_overall %></p>
+          <% else %>
+            <p><%= t "activerecord.attributes.command.statuses.#{command.status}" %></p>
+          <% end %>
+          <% if command.note.present? %>
+            <p><%= command.note %></p>
+          <% end %>
+          <br>
+        </div>
+        <div class="col-md-8 p-0" align="right">
+          <%= image_tag command.image.variant(:web), class: 'img-fluid mb-5', alt: command.name, title: command.name if command.image.attached? %>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Этап</th>
+          <th scope="col">Имя</th>
+          <th scope="col">Дистанция</th>
+          <th scope="col">Время</th>
+          <th scope="col" class="hidden-on-phone">Темп</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <% command.results.order(:stage).includes(:athlete).each do |result| %>
+          <tr>
+            <th scope="row"><%= human_result_stage result %></th>
+            <td><%= link_to result.athlete.name, athlete_path(result.athlete.nickname) %></td>
+            <td><%= human_distance result.distance, @event.kind %></td>
+            <td><%= human_result_time result %></td>
+            <td class="hidden-on-phone"><%= human_result_pace result %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
 </div>
