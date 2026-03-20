@@ -166,3 +166,13 @@ a.nav-link.active {
 .description p, ol, ul {
   margin: 0;
 }
+
+.circle-highlight{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 100%;
+  margin: 0 2px;
+}

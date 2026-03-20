@@ -68,9 +68,9 @@ ru:
         name: название
         location: локация
         commands_count: команды
-        image: фото
         hidden: скрытая
       command:
+        image: фото
         name: название
         total_time: результат
         fractional_second: доли секунды

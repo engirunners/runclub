@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def human_result_stage(result)
-    result.command.plain? ? result.stage : human_result_kind(result)
+    result.command.event.tri? ? human_result_kind(result) : result.stage
   end
 
   def time_to_sec(time)
@@ -63,8 +63,8 @@ module ApplicationHelper
     t "activerecord.attributes.result.kinds.#{result.kind}"
   end
 
-  def human_distance(distance)
-    return "#{(1000 * distance).to_i}м" if distance < 1
+  def human_distance(distance, kind)
+    return "#{(1000 * distance).to_i}м" if distance < 1 || kind == "track" 
 
     "#{distance == distance.to_i ? distance.to_i : number_with_delimiter(distance)}км"
   end
@@ -84,4 +84,26 @@ module ApplicationHelper
       "/images/unknown_#{athlete.gender}.png"
     end
   end
+
+  def command_long_status(status)
+    t "activerecord.attributes.command.long_statuses.#{status}"
+  end
+
+  def event_kind(kind)
+    "images/kinds/#{kind}.png"
+  end
+  
+  def position_color(position)
+    ['#ffad00', '#C0C0C0', '#CD7F32'][position-1]
+  end
+
+  def format_position(position, status, colorize=true)
+    if status!="ok"
+      return status.upcase
+    elsif position<4 && colorize
+      return ("<span class='circle-highlight' style='background-color:#{position_color position}'>#{position}</span>").html_safe
+    end
+    return position  
+  end
+
 end
