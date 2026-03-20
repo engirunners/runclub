@@ -97,11 +97,15 @@ module ApplicationHelper
     ['#ffad00', '#C0C0C0', '#CD7F32'][position-1]
   end
 
+  def position_roman(position)
+    ['I','II','III'][position-1]
+  end
+
   def format_position(position, status, colorize=true)
     if status!="ok"
       return status.upcase
     elsif position<4 && colorize
-      return ("<span class='circle_highlight' style='background-color:#{position_color position}'>#{position}</span>").html_safe
+      return ("<span class='circle-highlight' style='background-color:#{position_color position}'>#{position}</span>").html_safe
     end
     return position  
   end
